@@ -4,6 +4,8 @@ React Native boilerplate including react-navigation, redux, and sagas with examp
 
 If you are looking for a more simple boilerplate, try our [single screen react-native boilerplate](https://github.com/textileio/react-native-boilerplate).
 
+This project uses [Typescript](https://www.typescriptlang.org/).
+
 ## How to use.
 
 ##### Clone this repo
