@@ -18,13 +18,13 @@ cd advanced-react-native-boilerplate
 
 We use Yarn for development and recommend [installing it](https://yarnpkg.com/lang/en/docs/install/), however, `npm` alone _might_ work.
 
-```
+```bash
 yarn install
 ```
 
 #### Run the app
 
-```
+```bash
 react-native run-ios
 ```
 
@@ -62,7 +62,7 @@ We've included one Redux file here, [MainRedux](https://github.com/textileio/adv
 
 You can trigger a new Redux action with no state changes simply by updating MainRedux, for example,
 
-```
+```javascript
 const actions = {
   nodeStarted: createAction('NODE_STARTED'),
   newNodeState: createAction('NEW_NODE_STATE', (resolve) => {
@@ -74,7 +74,7 @@ const actions = {
 
 Or, you can create an event's payload to update the Redux state with,
 
-```
+```javascript
 const actions = {
   nodeStarted: createAction('NODE_STARTED'),
   newNodeState: createAction('NEW_NODE_STATE', (resolve) => {
