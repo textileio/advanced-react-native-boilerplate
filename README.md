@@ -33,9 +33,9 @@ react-native run-ios
 
 ## Adding new screens
 
-You can add new views as React Native components in `src/Containers`. Take a look at the [Home.tsx](https://github.com/textileio/advanced-react-native-boilerplate/blob/master/src/Containers/Home.tsx) for how we've structured a basic screen, reading state information from our Redux state data.
+You can add new views as React Native components in `src/Containers`. Take a look at the [Home.tsx](https://github.com/textileio/advanced-react-native-boilerplate/blob/master/src/Containers/Home.tsx) for how we've structured a basic screen, reading Textile node state information from our Redux state data.
 
-After adding a new view, you'll want to include in in your Navigation object found at [src/Navigation/index.ts](https://github.com/textileio/advanced-react-native-boilerplate/blob/master/src/Navigation/index.ts). 
+After adding a new view, you'll want to include it in your Navigation object found at [src/Navigation/index.ts](https://github.com/textileio/advanced-react-native-boilerplate/blob/master/src/Navigation/index.ts). 
 
 Import your new view,
 
