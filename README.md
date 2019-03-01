@@ -30,6 +30,10 @@ yarn install
 react-native run-ios
 ```
 
+#### Issues
+
+Please add any issues to the [react-native-sdk repo](https://github.com/textileio/react-native-sdk).
+
 
 ## Adding new screens
 
