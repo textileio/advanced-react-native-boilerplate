@@ -6,6 +6,8 @@ If you are looking for a more simple boilerplate, try our [single screen react-n
 
 This project uses [Typescript](https://www.typescriptlang.org/).
 
+The project setup was inspired by [Textile Photos](https://github.com/textileio/textile-mobile/) and was used in [AirSecure](http://github.com/airsecure/airsecure).
+
 ## How to use.
 
 ##### Clone this repo
