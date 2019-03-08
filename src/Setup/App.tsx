@@ -22,11 +22,10 @@ class App extends Component {
   }
 
   componentDidMount () {
+    this.events.addListener('NODE_ONLINE', () => {
+      store.dispatch(MainActions.nodeOnline())
+    })
     this.events.addListener('newNodeState', (payload) => {
-      if (payload.state === 'started') {
-        // Redundant to newNodeState, but just for example purposes
-        store.dispatch(MainActions.nodeStarted())
-      }
       store.dispatch(MainActions.newNodeState(payload.state))
       console.info('@textile/newNodeState', payload.state)
     })

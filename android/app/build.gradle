@@ -134,6 +134,7 @@ android {
 }
 
 dependencies {
+    compile project(':@textile_react-native-textile-image')
     compile project(':react-native-fs')
     compile project(':react-native-background-timer')
     compile project(':react-native-background-fetch')
