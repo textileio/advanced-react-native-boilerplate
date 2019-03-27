@@ -671,22 +671,25 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.0.0.tgz#9342b7eb52ed3c903e122841407d4984b7338339"
 
-"@textile/go-mobile@1.0.0-rc50":
-  version "1.0.0-rc50"
-  resolved "https://registry.yarnpkg.com/@textile/go-mobile/-/go-mobile-1.0.0-rc50.tgz#47cd18fbf18139a129b9ad5b7e92e09664503cac"
+"@textile/go-mobile@0.1.10-rc3":
+  version "0.1.10-rc3"
+  resolved "https://registry.yarnpkg.com/@textile/go-mobile/-/go-mobile-0.1.10-rc3.tgz#1e425b4cf6743601df883292a8da80acd4e06326"
+  integrity sha512-jRE8GtGfe2+aDNkuMBs6HndVufwrR3ITDPDY3QZYfM7GDMxhDI9T8yrCYy7gDjUbL3ZP4aPJTM4M0l/Bhf2JBA==
   dependencies:
     protobufjs "^6.8.8"
 
-"@textile/react-native-sdk@1.1.0-rc34":
-  version "1.1.0-rc34"
-  resolved "https://registry.yarnpkg.com/@textile/react-native-sdk/-/react-native-sdk-1.1.0-rc34.tgz#b3929807f9495a7cb51f813b26da633010ae7c3d"
+"@textile/react-native-sdk@1.1.0-rc46":
+  version "1.1.0-rc46"
+  resolved "https://registry.yarnpkg.com/@textile/react-native-sdk/-/react-native-sdk-1.1.0-rc46.tgz#f0ffe80403440829f27f057cbf608813902961ca"
+  integrity sha512-Un8EkqoXQ581ejhEvf3PdCmo+o6xiUkynmrQ+dmpju1t4zfelQegZq6skvxJwKTZhRIfYir4m30bTSMcseb26w==
   dependencies:
-    "@textile/go-mobile" "1.0.0-rc50"
+    "@textile/go-mobile" "0.1.10-rc3"
     buffer "^5.2.1"
 
-"@textile/react-native-textile-image@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@textile/react-native-textile-image/-/react-native-textile-image-1.0.0.tgz#e2f3eedb72930230fb976c2bde94a32f2618ef53"
+"@textile/react-native-textile-image@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@textile/react-native-textile-image/-/react-native-textile-image-1.0.1.tgz#672b92ef71ae4f407b1dc4193aae16f1c78e374e"
+  integrity sha512-b9mxCw6cwEQdr0AnYLFjHlC+zxw/VVUb/f3uJ/2x9PlixNKGdMZjd+o5IjCwhymIW3Mi0D8xRGOi/JsfohwZ8g==
 
 "@types/cheerio@*":
   version "0.22.10"
@@ -4669,9 +4672,10 @@ react-native-typography@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/react-native-typography/-/react-native-typography-1.4.0.tgz#166b79c618075882d8af07720649f5bc6523160d"
 
-react-native@^0.57.2:
-  version "0.57.8"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.57.8.tgz#1a840fbe144cd3902cc14313a783ce28efc48cb9"
+react-native@0.57.7:
+  version "0.57.7"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.57.7.tgz#5b3af1c43366c41d8d8d2540fea8ce590060bca1"
+  integrity sha512-mdNibV6NblH8gbbcWjLjH6lVOkrXuCiIi+RQ+6e2QlrOIJVsKC216VvBhHsvdDIRO94v1qD8LMnTYlBY09qzQQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
     absolute-path "^0.0.0"
@@ -4721,7 +4725,7 @@ react-native@^0.57.2:
     serve-static "^1.13.1"
     shell-quote "1.6.1"
     stacktrace-parser "^0.1.3"
-    ws "^1.1.5"
+    ws "^1.1.0"
     xcode "^1.0.0"
     xmldoc "^0.4.0"
     yargs "^9.0.0"
@@ -5921,7 +5925,7 @@ write-file-atomic@^1.2.0:
     imurmurhash "^0.1.4"
     slide "^1.1.5"
 
-ws@^1.1.0, ws@^1.1.5:
+ws@^1.1.0:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ws/-/ws-1.1.5.tgz#cbd9e6e75e09fc5d2c90015f21f0c40875e0dd51"
   dependencies:
