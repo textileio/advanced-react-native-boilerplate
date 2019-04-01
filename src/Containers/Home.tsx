@@ -5,6 +5,7 @@ import { View, Text, Image, TouchableOpacity, Linking } from 'react-native'
 import { RootAction, RootState } from '../Redux/Types'
 import styles from './Styles'
 import { NodeState } from '@textile/react-native-sdk'
+import TextileImage from '@textile/react-native-textile-image'
 
 class Home extends React.Component<StateProps> {
   render() {
@@ -19,7 +20,7 @@ class Home extends React.Component<StateProps> {
             style={styles.imageView}
             onPress={this.viewFile}
           >
-            {this.ipfsImage()}
+            {this.props.ipfsImage && this.renderImage()}
             {this.props.ipfsImage && <Text style={styles.hashText}>QmTgtbb4LckHaXh1YhpNcBu48cFY8zgT1Lh49q7q7ksf3M</Text>}
           </TouchableOpacity>
           <Text style={styles.statusText}>{previewText}</Text>
@@ -27,19 +28,19 @@ class Home extends React.Component<StateProps> {
       </View>
     )
   }
+
+  renderImage = () => {
+    return (
+      <TextileImage
+        style={{ width: 150, height: 150}}
+        target={'QmTgtbb4LckHaXh1YhpNcBu48cFY8zgT1Lh49q7q7ksf3M/raster-generated/ipfs-logo-256-ice.png'}
+        ipfs={true}
+        resizeMode={'cover'}
+      />
+    )
+  }
   viewFile = () => {
     Linking.openURL('https://ipfs.io/ipfs/QmTgtbb4LckHaXh1YhpNcBu48cFY8zgT1Lh49q7q7ksf3M/raster-generated/ipfs-logo-256-ice.png')
-  }
-  ipfsImage = () => {
-    if (this.props.ipfsImage) {
-      return (
-        <Image
-          style={{width: 150, height: 150, resizeMode: 'cover'}}
-          source={{uri: this.props.ipfsImage}}
-        />
-      )
-    }
-    return (<View/>)
   }
 }
 

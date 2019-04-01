@@ -12,6 +12,7 @@ export function* mainSagaInit() {
 
 export function * onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
   console.info('Running onOnline Saga')
+  // here we request raw data, where in the view, we'll use TextileImage to just render the request directly
   const imageData = yield call(API.ipfs.dataAtPath, 'QmTgtbb4LckHaXh1YhpNcBu48cFY8zgT1Lh49q7q7ksf3M/raster-generated/ipfs-logo-256-ice.png')
   yield put(MainActions.ipfsImage(imageData))
 }
