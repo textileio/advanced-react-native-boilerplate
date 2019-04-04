@@ -671,25 +671,25 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.0.0.tgz#9342b7eb52ed3c903e122841407d4984b7338339"
 
-"@textile/go-mobile@0.1.10-rc4":
-  version "0.1.10-rc4"
-  resolved "https://registry.yarnpkg.com/@textile/go-mobile/-/go-mobile-0.1.10-rc4.tgz#ce1a6118a103a39f016bb1454b776f92f78e8164"
-  integrity sha512-3x1CuBZvfnkCA1iwEiMtI9+ftO07GD0KsGPIL8W+YU4JD13vexIbqaS9d7P+EXRiiO92ete6v10tQEwOiBSJEw==
+"@textile/go-mobile@0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@textile/go-mobile/-/go-mobile-0.1.11.tgz#da3979c226f7b998d07e6b72a6835f6084d492ae"
+  integrity sha512-hTZ+KUfXQMjcM27P6MEYrm3Oc3fBlUPZwWJqWo1JbMRlvn4BS7sokv0MwCqcxC3CkW3/vqUBvrA/3itz6JKrgQ==
   dependencies:
     protobufjs "^6.8.8"
 
-"@textile/react-native-sdk@1.1.0-rc47":
-  version "1.1.0-rc47"
-  resolved "https://registry.yarnpkg.com/@textile/react-native-sdk/-/react-native-sdk-1.1.0-rc47.tgz#c0c1e1f3297fd41d440500610dcc314f5f465e34"
-  integrity sha512-3qc9IHMmb8GReS/nj3/4BdSBQs5C7NAVi29tSoB08IskH5t8HsF1y78D8Uc19iO11SCcdswEJLbVBb3fn6I0dg==
+"@textile/react-native-sdk@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@textile/react-native-sdk/-/react-native-sdk-1.1.2.tgz#c8af445609fae418a504c31b9c9ca5810d1e3f04"
+  integrity sha512-ZWCHYxga18bFbb2FcJ/3ahqV/eoaO++57xC1PPJW+kSTQOCKc/VeivKuLyK6lXMADwWrfhJhw+WVC9BxZhFtDw==
   dependencies:
-    "@textile/go-mobile" "0.1.10-rc4"
+    "@textile/go-mobile" "0.1.11"
     buffer "^5.2.1"
 
-"@textile/react-native-textile-image@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@textile/react-native-textile-image/-/react-native-textile-image-1.0.1.tgz#672b92ef71ae4f407b1dc4193aae16f1c78e374e"
-  integrity sha512-b9mxCw6cwEQdr0AnYLFjHlC+zxw/VVUb/f3uJ/2x9PlixNKGdMZjd+o5IjCwhymIW3Mi0D8xRGOi/JsfohwZ8g==
+"@textile/react-native-textile-image@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@textile/react-native-textile-image/-/react-native-textile-image-1.0.3.tgz#2d8ca5dda590df140848790ac5d13ad992cf5d39"
+  integrity sha512-SkNdIuc7lOMkNvF8NAWvkunubw3e3Jf0bw2UIZHsaKLKU37MAGqQRRrPwXML4MGhh+FUEwfRcn++rZ9hgxwSpQ==
 
 "@types/cheerio@*":
   version "0.22.10"

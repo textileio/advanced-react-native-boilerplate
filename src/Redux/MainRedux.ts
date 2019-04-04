@@ -7,9 +7,10 @@ const actions = {
   newNodeState: createAction('NEW_NODE_STATE', (resolve) => {
     return (nodeState: NodeState) => resolve({ nodeState })
   }),
-  ipfsImage: createAction('IPFS_IMAGE', (resolve) => {
+  loadIPFSDataSuccess: createAction('LOAD_IPFS_DATA_SUCCESS', (resolve) => {
     return (ipfsImage: string) => resolve({ ipfsImage })
-  })
+  }),
+  loadIPFSData: createAction('LOAD_IPFS_DATA_REQUEST')
 }
 
 export type MainActions = ActionType<typeof actions>
@@ -33,7 +34,7 @@ export function reducer(state = initialState, action: MainActions) {
     case getType(actions.newNodeState): {
       return { ...state, nodeState: action.payload.nodeState }
     }
-    case getType(actions.ipfsImage): {
+    case getType(actions.loadIPFSDataSuccess): {
       return { ...state, ipfsImage: `data:image/png;base64,${action.payload.ipfsImage}` }
     }
     default:

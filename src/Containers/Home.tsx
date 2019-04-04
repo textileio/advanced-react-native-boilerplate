@@ -1,28 +1,29 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { View, Text, Image, TouchableOpacity, Linking } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Linking, Dimensions } from 'react-native'
 import { RootAction, RootState } from '../Redux/Types'
 import styles from './Styles'
 import { NodeState } from '@textile/react-native-sdk'
 import TextileImage from '@textile/react-native-textile-image'
 
+const IPFS_PIN = 'QmTgtbb4LckHaXh1YhpNcBu48cFY8zgT1Lh49q7q7ksf3M/raster-generated/ipfs-logo-256-ice.png'
+
 class Home extends React.Component<StateProps> {
   render() {
     const previewText = !this.props.online ? 'waiting to come online...' : this.props.ipfsImage === undefined ? 'requesting ipfs hash...' : 'ipfs request complete'
+    // if (this.props.online) {
+    //   return this.renderPanZoom()
+    // }
     return (
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>{this.props.nodeState} local node</Text>
         </View>
         <View style={styles.ipfs}>
-          <TouchableOpacity
-            style={styles.imageView}
-            onPress={this.viewFile}
-          >
+
             {this.props.ipfsImage && this.renderImage()}
-            {this.props.ipfsImage && <Text style={styles.hashText}>QmTgtbb4LckHaXh1YhpNcBu48cFY8zgT1Lh49q7q7ksf3M</Text>}
-          </TouchableOpacity>
+
           <Text style={styles.statusText}>{previewText}</Text>
         </View>
       </View>
@@ -33,14 +34,11 @@ class Home extends React.Component<StateProps> {
     return (
       <TextileImage
         style={{ width: 150, height: 150}}
-        target={'QmTgtbb4LckHaXh1YhpNcBu48cFY8zgT1Lh49q7q7ksf3M/raster-generated/ipfs-logo-256-ice.png'}
+        target={IPFS_PIN}
         ipfs={true}
         resizeMode={'cover'}
       />
     )
-  }
-  viewFile = () => {
-    Linking.openURL('https://ipfs.io/ipfs/QmTgtbb4LckHaXh1YhpNcBu48cFY8zgT1Lh49q7q7ksf3M/raster-generated/ipfs-logo-256-ice.png')
   }
 }
 
@@ -56,8 +54,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<RootAction>): {} => {
-  return {
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
