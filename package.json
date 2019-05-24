@@ -9,8 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@textile/react-native-sdk": "1.1.2",
-    "@textile/react-native-textile-image": "1.0.3",
+    "@textile/react-native-sdk": "1.2.8",
     "buffer": "^5.2.1",
     "react": "^16.6.3",
     "react-native": "0.57.7",

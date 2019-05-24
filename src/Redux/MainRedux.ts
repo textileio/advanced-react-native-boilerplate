@@ -1,5 +1,4 @@
 import { createAction, ActionType, getType } from 'typesafe-actions'
-import { NodeState } from '@textile/react-native-sdk'
 import { RootState } from './Types'
 
 const actions = {
@@ -15,6 +14,8 @@ const actions = {
 
 export type MainActions = ActionType<typeof actions>
 
+export type NodeState = 'started' | 'stopped' | 'starting' | 'unknown' | 'error'
+
 export interface MainState {
   online: boolean
   nodeState: NodeState
@@ -23,7 +24,7 @@ export interface MainState {
 
 const initialState: MainState = {
   online: false,
-  nodeState: NodeState.nonexistent
+  nodeState: 'stopped'
 }
 
 export function reducer(state = initialState, action: MainActions) {

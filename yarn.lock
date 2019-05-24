@@ -671,25 +671,20 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.0.0.tgz#9342b7eb52ed3c903e122841407d4984b7338339"
 
-"@textile/go-mobile@0.1.11":
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@textile/go-mobile/-/go-mobile-0.1.11.tgz#da3979c226f7b998d07e6b72a6835f6084d492ae"
-  integrity sha512-hTZ+KUfXQMjcM27P6MEYrm3Oc3fBlUPZwWJqWo1JbMRlvn4BS7sokv0MwCqcxC3CkW3/vqUBvrA/3itz6JKrgQ==
+"@textile/js-types@0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@textile/js-types/-/js-types-0.1.14.tgz#ba4002c2ca43968413ba9670a6e54c1fd20d32f9"
+  integrity sha512-9d4hKDejLL4RWjbxnRfRe6LbWGdvfrLd7K21DfaP465knjG5PIkSIdbNZqeYVjUgh78rPZxWwJyY+tgIvWpNzQ==
   dependencies:
     protobufjs "^6.8.8"
 
-"@textile/react-native-sdk@1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@textile/react-native-sdk/-/react-native-sdk-1.1.2.tgz#c8af445609fae418a504c31b9c9ca5810d1e3f04"
-  integrity sha512-ZWCHYxga18bFbb2FcJ/3ahqV/eoaO++57xC1PPJW+kSTQOCKc/VeivKuLyK6lXMADwWrfhJhw+WVC9BxZhFtDw==
+"@textile/react-native-sdk@1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@textile/react-native-sdk/-/react-native-sdk-1.2.8.tgz#01bd975fa3e94fa07ecd50149825f7b20d56e9ed"
+  integrity sha512-VsnqaPARJFrOpEMYUKeZLJe/d1U/yw2uu9ELYN7PtqWKFEq7JN6ZoBgfg+bBbpWZYz7jHEKgVpNZlzqzm6iIZQ==
   dependencies:
-    "@textile/go-mobile" "0.1.11"
+    "@textile/js-types" "0.1.14"
     buffer "^5.2.1"
-
-"@textile/react-native-textile-image@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@textile/react-native-textile-image/-/react-native-textile-image-1.0.3.tgz#2d8ca5dda590df140848790ac5d13ad992cf5d39"
-  integrity sha512-SkNdIuc7lOMkNvF8NAWvkunubw3e3Jf0bw2UIZHsaKLKU37MAGqQRRrPwXML4MGhh+FUEwfRcn++rZ9hgxwSpQ==
 
 "@types/cheerio@*":
   version "0.22.10"
