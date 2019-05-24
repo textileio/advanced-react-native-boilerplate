@@ -4,10 +4,9 @@ import { Dispatch } from 'redux'
 import { View, Text, Image, TouchableOpacity, Linking, Dimensions } from 'react-native'
 import { RootAction, RootState } from '../Redux/Types'
 import styles from './Styles'
-import { NodeState } from '@textile/react-native-sdk'
-import TextileImage from '@textile/react-native-textile-image'
+import { NodeState } from '../Redux/MainRedux'
 
-const IPFS_PIN = 'QmTgtbb4LckHaXh1YhpNcBu48cFY8zgT1Lh49q7q7ksf3M/raster-generated/ipfs-logo-256-ice.png'
+const IPFS_PIN = 'QmZGaNPVSyDPF3xkDDF847rGcBsRRgEbhAqLLBD4gNB7ex/0/content'
 
 class Home extends React.Component<StateProps> {
   render() {
@@ -18,13 +17,11 @@ class Home extends React.Component<StateProps> {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.title}>{this.props.nodeState} local node</Text>
+          <Text style={styles.title}>local node state: {this.props.nodeState}</Text>
         </View>
         <View style={styles.ipfs}>
-
-            {this.props.ipfsImage && this.renderImage()}
-
           <Text style={styles.statusText}>{previewText}</Text>
+          {this.props.ipfsImage && this.renderImage()}
         </View>
       </View>
     )
@@ -32,10 +29,9 @@ class Home extends React.Component<StateProps> {
 
   renderImage = () => {
     return (
-      <TextileImage
-        style={{ width: 150, height: 150}}
-        target={IPFS_PIN}
-        ipfs={true}
+      <Image
+        style={{ width: 150, height: 150, marginTop: 20}}
+        source={{uri: this.props.ipfsImage}}
         resizeMode={'cover'}
       />
     )

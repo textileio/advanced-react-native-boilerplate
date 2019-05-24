@@ -9,6 +9,8 @@ android/**/*.classpath
 # OSX
 #
 .DS_Store
+ios/Podfile.lock
+ios/Pods/
 
 .tmp
 

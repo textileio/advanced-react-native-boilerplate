@@ -21,13 +21,12 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		279FF97640534D00B253243A /* libRNTextile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CACEABCEB841484ABF6CBA58 /* libRNTextile.a */; };
 		74AFCD8CBE9E4A6AA9423C1E /* libRNBackgroundTimer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C11B53611E41DA9F9BCB55 /* libRNBackgroundTimer.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		A23B079722280BA000E60880 /* libTextileImageView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A23B079622280B5600E60880 /* libTextileImageView.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		C2B3622C68EA4D5091E75B33 /* RNBackgroundFetch+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFB5ED374DA542B4B4D71D4F /* RNBackgroundFetch+AppDelegate.m */; };
 		DDC165CC0C0C4063B8704987 /* libRNBackgroundFetch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC947CAF7CA3430DACB7DAB5 /* libRNBackgroundFetch.a */; };
+		EA57387E188692E19FD92C3E /* libPods-TApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD99D38B8E47E300C7C9C33 /* libPods-TApp.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		F29CCA3D6181435E9B8B11E2 /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 083A85397F58457A82B1B990 /* libRNFS.a */; };
 		F62A32FF7B06403F9E57EEEC /* TSBackgroundFetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487594E845DE49A8888046F8 /* TSBackgroundFetch.framework */; };
@@ -286,13 +285,6 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
-		A23B079522280B5600E60880 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A23B076622280B5600E60880 /* TextileImageView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = TextileImageView;
-		};
 		A28F170E22259D09001BBEC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 69EC79EF625049D388DA26B0 /* RNBackgroundFetch.xcodeproj */;
@@ -328,13 +320,6 @@
 			remoteGlobalIDString = 6456441F1EB8DA9100672408;
 			remoteInfo = "RNFS-tvOS";
 		};
-		A28F171D22259D09001BBEC9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E0F1169B76341F885F490B6 /* RNTextile.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNTextile;
-		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -365,16 +350,18 @@
 		15DF5F880B7E4379AD01A4C4 /* RNFS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFS.xcodeproj; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		487594E845DE49A8888046F8 /* TSBackgroundFetch.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = TSBackgroundFetch.framework; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/TSBackgroundFetch.framework"; sourceTree = SDKROOT; };
+		4AD99D38B8E47E300C7C9C33 /* libPods-TApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		69EC79EF625049D388DA26B0 /* RNBackgroundFetch.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBackgroundFetch.xcodeproj; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch.xcodeproj"; sourceTree = "<group>"; };
 		6E4D259CEF684F6F902F9D00 /* RNBackgroundTimer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBackgroundTimer.xcodeproj; path = "../node_modules/react-native-background-timer/ios/RNBackgroundTimer.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		7E0F1169B76341F885F490B6 /* RNTextile.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNTextile.xcodeproj; path = "../node_modules/@textile/react-native-sdk/ios/RNTextile.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		88C11B53611E41DA9F9BCB55 /* libRNBackgroundTimer.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBackgroundTimer.a; sourceTree = "<group>"; };
-		A23B076622280B5600E60880 /* TextileImageView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TextileImageView.xcodeproj; path = "../node_modules/@textile/react-native-textile-image/ios/TextileImageView.xcodeproj"; sourceTree = "<group>"; };
+		A29CF8822298AAFD00E19523 /* libDoubleConversion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDoubleConversion.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC947CAF7CA3430DACB7DAB5 /* libRNBackgroundFetch.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBackgroundFetch.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		B2BB0EEAB9631477E7955A74 /* Pods-TApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TApp.release.xcconfig"; path = "Target Support Files/Pods-TApp/Pods-TApp.release.xcconfig"; sourceTree = "<group>"; };
+		B3721CD0EE906CD2444CBABC /* Pods-TApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TApp.debug.xcconfig"; path = "Target Support Files/Pods-TApp/Pods-TApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CACEABCEB841484ABF6CBA58 /* libRNTextile.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNTextile.a; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -386,7 +373,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A23B079722280BA000E60880 /* libTextileImageView.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -400,11 +386,11 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				279FF97640534D00B253243A /* libRNTextile.a in Frameworks */,
 				DDC165CC0C0C4063B8704987 /* libRNBackgroundFetch.a in Frameworks */,
 				F62A32FF7B06403F9E57EEEC /* TSBackgroundFetch.framework in Frameworks */,
 				74AFCD8CBE9E4A6AA9423C1E /* libRNBackgroundTimer.a in Frameworks */,
 				F29CCA3D6181435E9B8B11E2 /* libRNFS.a in Frameworks */,
+				EA57387E188692E19FD92C3E /* libPods-TApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,12 +500,23 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A29CF8822298AAFD00E19523 /* libDoubleConversion.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				487594E845DE49A8888046F8 /* TSBackgroundFetch.framework */,
+				4AD99D38B8E47E300C7C9C33 /* libPods-TApp.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C494A9935CB9854674A1D92 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3721CD0EE906CD2444CBABC /* Pods-TApp.debug.xcconfig */,
+				B2BB0EEAB9631477E7955A74 /* Pods-TApp.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -543,7 +540,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				A23B076622280B5600E60880 /* TextileImageView.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -556,7 +552,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				7E0F1169B76341F885F490B6 /* RNTextile.xcodeproj */,
 				69EC79EF625049D388DA26B0 /* RNBackgroundFetch.xcodeproj */,
 				6E4D259CEF684F6F902F9D00 /* RNBackgroundTimer.xcodeproj */,
 				15DF5F880B7E4379AD01A4C4 /* RNFS.xcodeproj */,
@@ -581,6 +576,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				A28F16DF22259D05001BBEC9 /* Recovered References */,
+				3C494A9935CB9854674A1D92 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -595,14 +591,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A23B076722280B5600E60880 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A23B079622280B5600E60880 /* libTextileImageView.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		A28F16DF22259D05001BBEC9 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,14 +600,6 @@
 				083A85397F58457A82B1B990 /* libRNFS.a */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		A28F170522259D09001BBEC9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A28F171E22259D09001BBEC9 /* libRNTextile.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		A28F170722259D09001BBEC9 /* Products */ = {
@@ -664,6 +644,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "TApp" */;
 			buildPhases = (
+				43E16AD9653740D3F2465090 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -769,14 +750,6 @@
 				{
 					ProductGroup = A28F170B22259D09001BBEC9 /* Products */;
 					ProjectRef = 15DF5F880B7E4379AD01A4C4 /* RNFS.xcodeproj */;
-				},
-				{
-					ProductGroup = A28F170522259D09001BBEC9 /* Products */;
-					ProjectRef = 7E0F1169B76341F885F490B6 /* RNTextile.xcodeproj */;
-				},
-				{
-					ProductGroup = A23B076722280B5600E60880 /* Products */;
-					ProjectRef = A23B076622280B5600E60880 /* TextileImageView.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1039,13 +1012,6 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A23B079622280B5600E60880 /* libTextileImageView.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTextileImageView.a;
-			remoteRef = A23B079522280B5600E60880 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		A28F170F22259D09001BBEC9 /* libRNBackgroundFetch.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1079,13 +1045,6 @@
 			fileType = archive.ar;
 			path = libRNFS.a;
 			remoteRef = A28F171A22259D09001BBEC9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A28F171E22259D09001BBEC9 /* libRNTextile.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNTextile.a;
-			remoteRef = A28F171D22259D09001BBEC9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
@@ -1124,6 +1083,28 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		43E16AD9653740D3F2465090 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1154,6 +1135,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3721CD0EE906CD2444CBABC /* Pods-TApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1162,19 +1144,14 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
-					"$(SRCROOT)/../node_modules/@textile/go-mobile/dist/ios/**",
-				);
-				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)",
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/@textile/react-native-sdk/ios",
-					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
-					"$(SRCROOT)/../node_modules/react-native-background-timer/ios",
-					"$(SRCROOT)/../node_modules/react-native-fs/**",
 				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../node_modules/@textile/go-mobile/dist/ios/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1188,6 +1165,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2BB0EEAB9631477E7955A74 /* Pods-TApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1195,19 +1173,14 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
-					"$(SRCROOT)/../node_modules/@textile/go-mobile/dist/ios/**",
-				);
-				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)",
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/@textile/react-native-sdk/ios",
-					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
-					"$(SRCROOT)/../node_modules/react-native-background-timer/ios",
-					"$(SRCROOT)/../node_modules/react-native-fs/**",
 				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../node_modules/@textile/go-mobile/dist/ios/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

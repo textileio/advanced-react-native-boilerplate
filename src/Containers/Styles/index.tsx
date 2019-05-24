@@ -50,7 +50,7 @@ const styles = StyleSheet.create<Style>({
     flex: 1,
     width: '100%',
     backgroundColor: 'white',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     paddingBottom: 30
   },
