@@ -1,20 +1,11 @@
-import { takeLatest } from 'redux-saga/effects'
+import { takeLatest, put, call, delay } from 'redux-saga/effects'
 import { ActionType } from 'typesafe-actions'
 import MainActions from '../Redux/MainRedux'
-import { put, call, delay } from 'redux-saga/effects'
 import Textile from '@textile/react-native-sdk'
 
 const IPFS_PIN = 'QmZGaNPVSyDPF3xkDDF847rGcBsRRgEbhAqLLBD4gNB7ex/0/content'
 
-// watcher saga: watches for actions dispatched to the store, starts worker saga
-export function* mainSagaInit() {
-  yield call(initializeTextile)
-  yield takeLatest('NODE_ONLINE', onOnline)
-  yield takeLatest('NEW_NODE_STATE', newNodeState)
-  yield takeLatest('LOAD_IPFS_DATA_REQUEST', loadIPFSData)
-}
-
-function * initializeTextile() {
+function* initializeTextile() {
   try {
     yield call(Textile.initialize, false, false)
   } catch (error) {
@@ -22,12 +13,14 @@ function * initializeTextile() {
   }
 }
 
-export function * onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
+export function* onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
   console.info('Running onOnline Saga')
   yield put(MainActions.loadIPFSData())
 }
 
-export function * loadIPFSData(action: ActionType<typeof MainActions.loadIPFSData>) {
+export function* loadIPFSData(
+  action: ActionType<typeof MainActions.loadIPFSData>
+) {
   try {
     // here we request raw data, where in the view, we'll use TextileImage to just render the request directly
     const imageData = yield call(Textile.ipfs.dataAtPath, IPFS_PIN)
@@ -40,7 +33,17 @@ export function * loadIPFSData(action: ActionType<typeof MainActions.loadIPFSDat
   }
 }
 
-export function * newNodeState(action: ActionType<typeof MainActions.newNodeState>) {
+/* eslint require-yield:1 */
+export function* newNodeState(
+  action: ActionType<typeof MainActions.newNodeState>
+) {
   console.info('Running newNodeState Saga')
 }
 
+// watcher saga: watches for actions dispatched to the store, starts worker saga
+export function* mainSagaInit() {
+  yield call(initializeTextile)
+  yield takeLatest('NODE_ONLINE', onOnline)
+  yield takeLatest('NEW_NODE_STATE', newNodeState)
+  yield takeLatest('LOAD_IPFS_DATA_REQUEST', loadIPFSData)
+}

@@ -1,7 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { View, Text, Image, TouchableOpacity, Linking, Dimensions } from 'react-native'
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Linking,
+  Dimensions
+} from 'react-native'
 import { RootAction, RootState } from '../Redux/Types'
 import styles from './Styles'
 import { NodeState } from '../Redux/MainRedux'
@@ -10,14 +17,20 @@ const IPFS_PIN = 'QmZGaNPVSyDPF3xkDDF847rGcBsRRgEbhAqLLBD4gNB7ex/0/content'
 
 class Home extends React.Component<StateProps> {
   render() {
-    const previewText = !this.props.online ? 'waiting to come online...' : this.props.ipfsImage === undefined ? 'requesting ipfs hash...' : 'ipfs request complete'
+    const previewText = !this.props.online
+      ? 'waiting to come online...'
+      : this.props.ipfsImage == null
+      ? 'requesting ipfs hash...'
+      : 'ipfs request complete'
     // if (this.props.online) {
     //   return this.renderPanZoom()
     // }
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.title}>local node state: {this.props.nodeState}</Text>
+          <Text style={styles.title}>
+            local node state: {this.props.nodeState}
+          </Text>
         </View>
         <View style={styles.ipfs}>
           <Text style={styles.statusText}>{previewText}</Text>
@@ -30,8 +43,8 @@ class Home extends React.Component<StateProps> {
   renderImage = () => {
     return (
       <Image
-        style={{ width: 150, height: 150, marginTop: 20}}
-        source={{uri: this.props.ipfsImage}}
+        style={{ width: 150, height: 150, marginTop: 20 }}
+        source={{ uri: this.props.ipfsImage }}
         resizeMode={'cover'}
       />
     )
@@ -43,14 +56,19 @@ interface StateProps {
   online: boolean
   ipfsImage?: string
 }
-const mapStateToProps = (state: RootState): StateProps => ({
-  nodeState: state.main.nodeState,
-  online: state.main.online,
-  ipfsImage: state.main.ipfsImage
-})
+function mapStateToProps(state: RootState): StateProps {
+  return {
+    nodeState: state.main.nodeState,
+    online: state.main.online,
+    ipfsImage: state.main.ipfsImage
+  }
+}
 
-const mapDispatchToProps = (dispatch: Dispatch<RootAction>): {} => {
+function mapDispatchToProps(dispatch: Dispatch<RootAction>): {} {
   return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home)

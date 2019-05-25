@@ -9,18 +9,17 @@ import Textile, { EventSubscription } from '@textile/react-native-sdk'
 const { store } = configureStore()
 
 class App extends Component {
-
   textile = Textile
   subscriptions: EventSubscription[] = []
-  render () {
+  render() {
     return (
       <Provider store={store}>
-          <RootContainer />
+        <RootContainer />
       </Provider>
     )
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.subscriptions.push(
       Textile.events.addNodeStartedListener(() => {
         store.dispatch(MainActions.newNodeState('started'))
@@ -32,7 +31,7 @@ class App extends Component {
       })
     )
     this.subscriptions.push(
-      Textile.events.addNodeFailedToStartListener((error) => {
+      Textile.events.addNodeFailedToStartListener(error => {
         store.dispatch(MainActions.newNodeState('error'))
       })
     )
@@ -41,10 +40,9 @@ class App extends Component {
         store.dispatch(MainActions.nodeOnline())
       })
     )
-
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     for (const subscription of this.subscriptions) {
       subscription.cancel()
     }

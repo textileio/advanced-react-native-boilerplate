@@ -1,7 +1,4 @@
-import {
-  createAppContainer,
-  createSwitchNavigator
-} from 'react-navigation'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 
 import Home from '../Containers/Home'
 
