@@ -2,8 +2,6 @@
 
 React Native boilerplate including react-navigation, redux, and sagas with example [Textile](https://github.com/textileio/go-textile/wiki) management. Built using the [Textile React Native SDK](https://github.com/textileio/react-native-sdk) and runs an [IPFS](https://ipfs.io) node directly in your app.
 
-If you are looking for a more simple boilerplate, try our [single screen react-native boilerplate](https://github.com/textileio/react-native-boilerplate).
-
 This project uses [Typescript](https://www.typescriptlang.org/).
 
 The project setup was inspired by [Textile Photos](https://github.com/textileio/textile-mobile/) and was used in [AirSecure](http://github.com/airsecure/airsecure).
