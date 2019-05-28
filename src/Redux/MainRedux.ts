@@ -3,10 +3,10 @@ import { RootState } from './Types'
 
 const actions = {
   nodeOnline: createAction('NODE_ONLINE'),
-  newNodeState: createAction('NEW_NODE_STATE', (resolve) => {
+  newNodeState: createAction('NEW_NODE_STATE', resolve => {
     return (nodeState: NodeState) => resolve({ nodeState })
   }),
-  loadIPFSDataSuccess: createAction('LOAD_IPFS_DATA_SUCCESS', (resolve) => {
+  loadIPFSDataSuccess: createAction('LOAD_IPFS_DATA_SUCCESS', resolve => {
     return (ipfsImage: string) => resolve({ ipfsImage })
   }),
   loadIPFSData: createAction('LOAD_IPFS_DATA_REQUEST')
@@ -36,7 +36,10 @@ export function reducer(state = initialState, action: MainActions) {
       return { ...state, nodeState: action.payload.nodeState }
     }
     case getType(actions.loadIPFSDataSuccess): {
-      return { ...state, ipfsImage: `data:image/png;base64,${action.payload.ipfsImage}` }
+      return {
+        ...state,
+        ipfsImage: `data:image/png;base64,${action.payload.ipfsImage}`
+      }
     }
     default:
       return state

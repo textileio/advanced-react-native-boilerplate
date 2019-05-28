@@ -6,13 +6,15 @@ import NavigationService from '../Navigation/Service'
 import styles from '../Containers/Styles'
 
 class App extends Component<{}> {
-  render () {
+  render() {
     const barStyle = Platform.OS === 'ios' ? 'dark-content' : 'light-content'
     return (
       <View style={styles.applicationView}>
         <StatusBar barStyle={barStyle} />
         <Navigation
-          ref={(navRef: NavigationContainerComponent) => { NavigationService.setTopLevelNavigator(navRef) }}
+          ref={(navRef: NavigationContainerComponent) => {
+            NavigationService.setTopLevelNavigator(navRef)
+          }}
         />
       </View>
     )

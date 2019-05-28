@@ -1,11 +1,10 @@
-import {
-  StyleSheet,
-  TextStyle,
-  ViewStyle,
-  ImageStyle
-} from 'react-native'
+import { StyleSheet, TextStyle, ViewStyle, ImageStyle } from 'react-native'
 
-import { material, materialColors, systemWeights } from 'react-native-typography'
+import {
+  material,
+  materialColors,
+  systemWeights
+} from 'react-native-typography'
 
 interface Style {
   applicationView: ViewStyle

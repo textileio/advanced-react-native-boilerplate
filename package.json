@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "tsc": "tsc -p . --noEmit",
-    "lint": "tslint -c tslint.json --project .",
+    "lint": "eslint --fix --ext .mjs,.js,.jsx,.ts,.tsx .",
     "test": "jest"
   },
   "dependencies": {
@@ -36,18 +36,25 @@
     "@types/react-navigation": "^3.0.2",
     "@types/react-redux": "^6.0.9",
     "@types/react-test-renderer": "^16.0.3",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "24.1.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
+    "eslint": "^5.16.0",
+    "eslint-config-bevry": "^1.2.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "jest": "24.1.0",
     "metro-react-native-babel-preset": "0.48.0",
+    "prettier": "^1.17.0",
     "react-dom": "^16.5.2",
     "react-native-typescript-transformer": "^1.2.11",
     "react-test-renderer": "16.6.3",
     "ts-jest": "^23.10.5",
-    "tslint": "^5.11.0",
-    "tslint-react": "^3.6.0",
     "typescript": "^3.2.4"
   },
   "jest": {
@@ -67,5 +74,21 @@
       "<rootDir>/node_modules/"
     ],
     "cacheDirectory": ".jest/cache"
+  },
+  "eslintConfig": {
+    "extends": [
+      "bevry"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
