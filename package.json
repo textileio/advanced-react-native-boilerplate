@@ -9,10 +9,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@textile/react-native-sdk": "1.2.8",
+    "@textile/react-native-sdk": "1.2.13",
     "buffer": "^5.2.1",
     "react": "^16.6.3",
-    "react-native": "0.57.7",
+    "react-native": "0.58.6",
     "react-native-background-fetch": "^2.4.3",
     "react-native-background-timer": "2.1.0-alpha.6",
     "react-native-fs": "^2.11.17",

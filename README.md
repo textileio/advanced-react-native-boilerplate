@@ -22,6 +22,7 @@ We use Yarn for development and recommend [installing it](https://yarnpkg.com/la
 
 ```bash
 yarn install
+(cd ios/; pod install)
 ```
 
 #### Run the app
