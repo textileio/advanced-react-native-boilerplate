@@ -1,6 +1,6 @@
 platform :ios, '10.0'
 
-target 'TApp' do
+target 'IPFSTag' do
   pod 'React', :path => '../node_modules/react-native', :subspecs => [
     'Core',
     'CxxBridge',
@@ -27,6 +27,8 @@ target 'TApp' do
 
   # your other libraries will follow here!
   pod 'textile-react-native-sdk', :path => '../node_modules/@textile/react-native-sdk'
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
 end
 
 # The following is needed to ensure the "archive" step works in XCode.
@@ -35,6 +37,14 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     if target.name == "React"
       target.remove_from_project
+    end
+    # per https://github.com/facebook/react-native/issues/20492
+    if target.name == 'yoga'
+      target.remove_from_project
+      target.build_configurations.each do |config|
+          config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
+          config.build_settings['GCC_WARN_64_TO_32_BIT_CONVERSION'] = 'NO'
+      end
     end
   end
 end

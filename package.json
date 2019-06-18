@@ -1,5 +1,5 @@
 {
-  "name": "tApp",
+  "name": "ipfs-tag",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,18 +11,22 @@
   "dependencies": {
     "@textile/react-native-sdk": "1.2.13",
     "buffer": "^5.2.1",
+    "number-to-words": "^1.2.4",
     "react": "^16.6.3",
     "react-native": "0.58.6",
     "react-native-background-fetch": "^2.4.3",
     "react-native-background-timer": "2.1.0-alpha.6",
     "react-native-fs": "^2.11.17",
+    "react-native-gesture-handler": "^1.3.0",
+    "react-native-modal": "^11.0.1",
+    "react-native-qrcode": "^0.2.7",
     "react-native-responsive-fontsize": "^0.1.8",
     "react-native-typography": "^1.4.0",
-    "react-navigation": "^3.2.3",
+    "react-navigation": "^3.9.1",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
-    "redux-saga": "^1.0.1",
+    "redux-saga": "^0.16.1",
     "typesafe-actions": "^3.0.0"
   },
   "devDependencies": {

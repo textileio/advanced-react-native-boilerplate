@@ -1,11 +1,17 @@
-import { takeLatest, put, call, delay } from 'redux-saga/effects'
+import { takeLatest, put, call, select, all, fork } from 'redux-saga/effects'
 import { ActionType } from 'typesafe-actions'
-import MainActions from '../Redux/MainRedux'
+import MainActions, {MainSelectors} from '../Redux/MainRedux'
 import Textile from '@textile/react-native-sdk'
+import { initChatSagas } from './SubSagas/Chat'
+import { initContactsSagas } from './SubSagas/Contacts'
+import { initGameSagas } from './SubSagas/Game'
+import { initInvitesSagas } from './SubSagas/Invites'
+import { getUserProfile, initUserProfileSagas } from './SubSagas/UserProfile'
 
-const IPFS_PIN = 'QmZGaNPVSyDPF3xkDDF847rGcBsRRgEbhAqLLBD4gNB7ex/0/content'
-
-function* initializeTextile() {
+/**
+ * Starts up the Textile & IPFS peers
+ */
+export function *initializeTextile() {
   try {
     yield call(Textile.initialize, false, false)
   } catch (error) {
@@ -13,37 +19,61 @@ function* initializeTextile() {
   }
 }
 
-export function* onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
-  console.info('Running onOnline Saga')
-  yield put(MainActions.loadIPFSData())
-}
-
-export function* loadIPFSData(
-  action: ActionType<typeof MainActions.loadIPFSData>
-) {
-  try {
-    // here we request raw data, where in the view, we'll use TextileImage to just render the request directly
-    const imageData = yield call(Textile.ipfs.dataAtPath, IPFS_PIN)
-    yield put(MainActions.loadIPFSDataSuccess(imageData))
-    console.info('IPFS Success')
-  } catch (error) {
-    console.info('IPFS Failure. Waiting 0.5s')
-    yield delay(1500)
-    yield put(MainActions.loadIPFSData())
+/**
+ * Gets all the latest threads, just throws the user into the latest one.
+ */
+export function *collectThreads() {
+  const threads = yield call([Textile.threads, 'list'])
+  const games = threads.items
+  if (games.length) {
+    yield put(MainActions.setCurrentGame(games[0]))
   }
 }
 
+/**
+ * Once the node is connected to the world, we can start doing stuff
+ */
+export function* onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
+  console.info('Running onOnline Saga')
+  const cafeRegistered = yield select(MainSelectors.cafeRegistered)
+  try {
+    if (!cafeRegistered) {
+      const cafes = yield call([Textile.cafes, 'sessions'])
+      if (!cafes.items.length) {
+        yield call([Textile.cafes, 'register'], 'https://us-west-beta.textile.cafe', 'ukbN5nU1BhhiDwBPq3XrbUnqakzKnrVRBXc5u2oj1Np3DBttmn757PYsN2u2')
+      }
+      yield put(MainActions.cafeRegistrationSuccess())
+    }
+  } catch (error) {
+    // pass, not too worried about the cafe in this app
+  }
+
+  yield put(MainActions.pushNewMessage(
+    {type: 'text', message: 'connected'}
+  ))
+  yield call(getUserProfile)
+}
+
 /* eslint require-yield:1 */
-export function* newNodeState(
-  action: ActionType<typeof MainActions.newNodeState>
-) {
-  console.info('Running newNodeState Saga')
+export function* newNodeState( action: ActionType<typeof MainActions.newNodeState>) {
+  console.info('newNodeState')
 }
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export function* mainSagaInit() {
-  yield call(initializeTextile)
   yield takeLatest('NODE_ONLINE', onOnline)
   yield takeLatest('NEW_NODE_STATE', newNodeState)
-  yield takeLatest('LOAD_IPFS_DATA_REQUEST', loadIPFSData)
+  yield put(MainActions.pushNewMessage({
+    type: 'text',
+    message: 'waiting for node...'
+  }))
+  yield all([
+    fork(initChatSagas),
+    fork(initContactsSagas),
+    fork(initGameSagas),
+    fork(initInvitesSagas),
+    fork(initUserProfileSagas),
+  ])
+  yield call(initializeTextile)
+
 }

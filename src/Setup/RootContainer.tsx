@@ -7,10 +7,9 @@ import styles from '../Containers/Styles'
 
 class App extends Component<{}> {
   render() {
-    const barStyle = Platform.OS === 'ios' ? 'dark-content' : 'light-content'
     return (
       <View style={styles.applicationView}>
-        <StatusBar barStyle={barStyle} />
+        <StatusBar barStyle={'light-content'} />
         <Navigation
           ref={(navRef: NavigationContainerComponent) => {
             NavigationService.setTopLevelNavigator(navRef)

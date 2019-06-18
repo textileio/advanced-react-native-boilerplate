@@ -1,10 +1,16 @@
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import { createAppContainer, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation'
 
 import Home from '../Containers/Home'
+import Game from '../Containers/Game'
+import Players from '../Containers/Players'
+import Chat from '../Containers/Chat'
 
 const nav = createSwitchNavigator(
   {
-    Home
+    Home,
+    Game,
+    Players,
+    Chat
   },
   {
     initialRouteName: 'Home'
