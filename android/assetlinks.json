@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.textile.ipfs.tag",
+    "sha256_cert_fingerprints":
+    ["ED:01:E9:F2:A8:96:B2:32:FD:40:E2:25:F5:EE:9F:5B:45:93:76:5F:E0:6D:1C:F4:32:DD:3B:86:81:A7:F9:9B"]
+  }
+}]

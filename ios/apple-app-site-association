@@ -1,0 +1,11 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "5VHA5U5FY8.io.textile.ipfs.tag",
+                "paths": [ "*", "/", "tag/*", "invite/*" ]
+            }
+        ]
+    }
+}
