@@ -51,7 +51,7 @@ class JoinModal extends React.Component<InputProps & StateToProps> {
         <View style={{flex: 0.3, margin: 10, alignContent: 'flex-start'}}>
           <Text style={styles.consoleText}>1. This is your super secret invite.</Text>
           <Text style={styles.consoleText}>2. Have anyone you want to join the game by first installing this app on their phone.</Text>
-          <Text style={styles.consoleText}>3. Have them point their native camera at this invite</Text>
+          <Text style={styles.consoleText}>3. Have them point their native camera app at this invite</Text>
           <Text style={styles.consoleText}>4. They should see a link to open this app and they are off to the races!</Text>
         </View>
         <View style={{flex: 0.2, backgroundColor: 'black', margin: 10, alignContent: 'flex-end'}}>

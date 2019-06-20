@@ -90,6 +90,16 @@ export function* newInvite(action: ActionType<typeof MainActions.newInvite>) {
       {type: 'text', message: 'Locating game on IPFS.'}
     ))
     yield call(processInvite, action.payload.id, action.payload.key, 0)
+    
+    yield put(MainActions.pushNewMessage(
+      {type: 'text', message: 'Remember, if anyone shows you their red card, you are it!'}
+    ))
+    yield put(MainActions.pushNewMessage(
+      {type: 'text', message: 'If the next screen is red... you are it!'}
+    ))
+    yield put(MainActions.pushNewMessage(
+      {type: 'text', message: 'Once you are it, you must scan their QR code to take over.'}
+    ))
   } catch (error) {
     //pass: user declined
   }

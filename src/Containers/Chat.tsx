@@ -24,7 +24,6 @@ class Chat extends React.Component<StateProps & DispatchProps & NavigationScreen
     text: '',
     keyboard: 'closed'
   }
-  interval: any
   scrollTimer: any
   flatlist: any
   keyboardDidShowListener: any
@@ -122,7 +121,6 @@ class Chat extends React.Component<StateProps & DispatchProps & NavigationScreen
     }
   }
   componentWillMount() {
-    this.interval  = setInterval(this.refreshMessages, 4000);
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow)
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide)
     AppState.addEventListener('change', this.handleAppStateChange)
@@ -131,9 +129,6 @@ class Chat extends React.Component<StateProps & DispatchProps & NavigationScreen
     this.refreshMessages()
   }
   componentWillUnmount() {
-    if (this.interval) {
-      clearInterval(this.interval)
-    }
     if (this.scrollTimer) {
       clearTimeout(this.scrollTimer)
     }
@@ -159,7 +154,7 @@ class Chat extends React.Component<StateProps & DispatchProps & NavigationScreen
     });
   }
   refreshMessages = () => {
-    this.props.refreshRequest()
+    this.props.refreshMessages()
   }
 }
 
@@ -212,11 +207,11 @@ function mapStateToProps(state: RootState): StateProps {
 }
 
 interface DispatchProps {
-  refreshRequest: () => void
+  refreshMessages: () => void
 }
 function mapDispatchToProps(dispatch: Dispatch<RootAction>): DispatchProps {
   return {
-    refreshRequest: () => {
+    refreshMessages: () => {
       dispatch(
         MainActions.refreshChatRequest()
       )

@@ -6,6 +6,7 @@ import { leaveGame } from './Game'
 import { refreshGameContacts } from './Contacts'
 
 export function* refreshMessagesRequest(action: ActionType<typeof MainActions.refreshMessagesRequest>) {
+  console.log('refreshing')
   const gameThread = yield select(MainSelectors.gameThread)
   if (gameThread && gameThread.id === action.payload.threadId) {
     yield call(updateMessages, gameThread)
@@ -30,7 +31,6 @@ export function* sendMessage(action: ActionType<typeof MainActions.sendMessage>)
       return
     }
     yield call([Textile.messages, 'add'], gameThread.id, text)  
-    yield call(updateMessages, gameThread.id)
   }
 }
 

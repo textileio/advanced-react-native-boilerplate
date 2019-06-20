@@ -184,9 +184,6 @@ export function* checkGameStatus(thread: Thread) {
     if (started) {
       yield put(MainActions.startGameSuccess(startTime))
     }
-    if (!gameStarted) {
-      yield call(startGameMessage)
-    }
     yield put(MainActions.setCurrentIt(tagged))
 
     yield call(refreshGameContacts, thread)
@@ -222,26 +219,6 @@ export function *restartGame() {
     console.log('error')
   }
 }
-export function * startGameMessage() {
-  yield put(MainActions.pushNewMessage(
-    {type: 'text', message: 'The game has started!'}
-  ))
-  yield put(MainActions.pushNewMessage(
-    {type: 'text', message: 'Remember, if anyone shows you their red card, you are it!'}
-  ))
-  yield put(MainActions.pushNewMessage(
-    {type: 'text', message: 'If the next screen is red... you are it!'}
-  ))
-  yield put(MainActions.pushNewMessage(
-    {type: 'text', message: 'Once you are it, you must scan their QR code to take over.'}
-  ))
-  yield put(MainActions.pushNewMessage(
-    {type: 'text', message: 'Tap "enter" below to find out who is it!'}
-  ))
-  yield put(MainActions.pushNewMessage(
-    {type: 'text', message: 'Ready... set...'}
-  ))
-}
 
 export function* joinGame() {
   yield put(MainActions.pushNewMessage(
@@ -251,7 +228,7 @@ export function* joinGame() {
     {type: 'text', message: '1. Have someone show you the secret invite QR code for the game.'}
   ))
   yield put(MainActions.pushNewMessage(
-    {type: 'text', message: '2. Point this phone\'s camera at the QR code.'}
+    {type: 'text', message: '2. Point this phone\'s native camera app at the QR code. Be sure that QR codes are enabled in your Camera Settings.'}
   ))
   yield put(MainActions.pushNewMessage(
     {type: 'text', message: '3. When prompted, open the link in this app.'}
@@ -297,7 +274,6 @@ export function* startGame(action: ActionType<typeof MainActions.startGame>) {
       
       const seconds = Math.round((new Date()).getTime() / 1000)
       yield put(MainActions.startGameSuccess(seconds))
-      yield call(startGameMessage)
       
       yield put(MainActions.setCurrentIt(profile))
     }

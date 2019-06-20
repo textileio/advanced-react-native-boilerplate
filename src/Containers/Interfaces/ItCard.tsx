@@ -36,7 +36,7 @@ class InviteModal extends React.Component<ScreenProps & StateToProps> {
     return (
       <View style={{flex: 0.35, margin: 10, marginTop: 20, alignContent: 'flex-start'}}>
         <Text style={styles.consoleTextIt}>1. Show this screen to anyone playing and they are it.</Text>
-        <Text style={styles.consoleTextIt}>2. Have them point their native camera at this code to notify the network.</Text>
+        <Text style={styles.consoleTextIt}>2. Have them point their native camera app at this code to notify the network.</Text>
         <Text style={styles.consoleTextIt}>3. Run!</Text>
         <TouchableOpacity
             activeOpacity={0.85}

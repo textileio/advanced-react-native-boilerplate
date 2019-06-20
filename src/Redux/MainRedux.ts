@@ -72,7 +72,7 @@ const actions = {
     return (id: string, key: string) => resolve({ id, key })
   }),
   refreshMessagesRequest: createAction('REFRESH_MESSAGES_REQUEST', resolve => {
-    return (threadId: string) => resolve({ threadId })
+    return (threadId: string, message: IText) => resolve({ threadId, message })
   }),
   refreshChatRequest: createAction('REFRESH_CHAT_REQUEST'),
   tagged: createAction('TAGGED', resolve => {
@@ -222,6 +222,9 @@ export function reducer(state = initialState, action: MainActions) {
         newLogs = [...state.gameLog, action.payload].sort((a, b) => (a.date > b.date) ? 1 : -1)
       }
       return { ...state, gameLog: newLogs, gameInfo: {...state.gameInfo, lastTag: action.payload.date}}
+    }
+    case getType(actions.refreshMessagesRequest): {
+      return { ...state, chat: [...state.chat, action.payload.message]}
     }
     case getType(actions.updateMessages): {
       return { ...state, chat: action.payload.messages}

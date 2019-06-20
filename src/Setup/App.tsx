@@ -5,7 +5,7 @@ import configureStore from '../Redux/configureStore'
 import MainActions from '../Redux/MainRedux'
 import DeepLinkEventHandler from './DeepLinkEventHandler'
 
-import Textile, { EventSubscription } from '@textile/react-native-sdk'
+import Textile, { EventSubscription, FeedItemType } from '@textile/react-native-sdk'
 import { NavigationScreenProps } from 'react-navigation'
 
 const { store } = configureStore()
@@ -46,19 +46,22 @@ class App extends Component<NavigationScreenProps> {
       })
     )
     this.subscriptions.push(
-      Textile.events.addThreadUpdateReceivedListener((update) => {
-        const { type_url } = update.payload
+      Textile.events.addThreadUpdateReceivedListener((threadId, feedItemData) => {
         if (
-          type_url === '/Join' ||
-          type_url === '/Leave') {
-            store.dispatch(MainActions.refreshContacts(update.thread))
+          feedItemData.type === FeedItemType.Join ||
+          feedItemData.type === FeedItemType.Leave
+          ) {
+            store.dispatch(MainActions.refreshContacts(threadId))
         }
         if (
-          type_url === '/File' ) {
-            store.dispatch(MainActions.refreshGameInfo(update.thread))
+          feedItemData.type === FeedItemType.Files ) {
+            console.log(threadId, threadId)
+            store.dispatch(MainActions.refreshGameInfo(threadId))
         }
-        if ( type_url === '/Comment') {
-          store.dispatch(MainActions.refreshMessagesRequest(update.thread))
+        if ( 
+          feedItemData.type === FeedItemType.Text
+        ) {
+          store.dispatch(MainActions.refreshMessagesRequest(threadId, feedItemData.value))
         }
       })
     )
