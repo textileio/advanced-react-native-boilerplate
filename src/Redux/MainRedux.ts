@@ -161,7 +161,7 @@ export function reducer(state = initialState, action: MainActions) {
       const messages = [
         {type: 'text', message: `Oh, I like that. ${action.payload.displayName}`},
         {type: 'text', message: `Ok then "${action.payload.displayName}", here are the rules:`},
-        {type: 'text', message: `1. IPFS Tag is meant to be played in a shared location.`},
+        {type: 'text', message: `1. Interplanetary Tag is meant to be played in a shared location.`},
         {type: 'text', message: `2. Games can only begin with 2 or more people, more can be invited at any time.`},
         {type: 'text', message: `3. The game creator is always It first.`},
         {type: 'text', message: `4. If you are shown a red card during the game, you are It and must scan the red card to keep playing the game..`},

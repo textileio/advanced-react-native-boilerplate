@@ -12,7 +12,7 @@ export function *getUserProfile() {
   if (!profile.name) {
     // User hasn't finished onboarding
     yield put(MainActions.pushNewMessage(
-      {type: 'text', message: 'Welcome to IPFS Tag!'}
+      {type: 'text', message: 'Welcome to Interplanetary Tag!'}
     ))
     yield put(MainActions.pushNewMessage(
       {type: 'text', message: 'Don\'t worry, you\'re not it... yet. First let\'s get you setup.'}
