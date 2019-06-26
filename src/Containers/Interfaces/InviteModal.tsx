@@ -74,6 +74,7 @@ interface StateToProps {
 
 function mapStateToProps(state: RootState): StateToProps {
   const inviteURL = state.main.gameInvite ? `https://t.txtl.us/invite#${state.main.gameInvite.id}::${state.main.gameInvite.key}` : 'https://textile.io/?oops'
+  // const inviteURL = state.main.peerId ? `https://t.txtl.us/invite#${state.main.peerId}` : 'https://textile.io/?oops'
   return {
     inviteURL
   }

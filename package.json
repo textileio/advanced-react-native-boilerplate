@@ -9,7 +9,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@textile/react-native-sdk": "2.0.0",
+    "@textile/react-native-sdk": "2.1.2",
+    "b64-to-blob": "^1.2.19",
     "buffer": "^5.2.1",
     "number-to-words": "^1.2.4",
     "react": "^16.6.3",

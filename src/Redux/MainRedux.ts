@@ -18,6 +18,9 @@ const actions = {
   setDisplayName: createAction('SET_DISPLAY_NAME', resolve => {
     return (displayName: string) => resolve({ displayName })
   }),
+  updatePeerId: createAction('UPDATE_PEERID', resolve => {
+    return (peerId: string) => resolve({ peerId })
+  }),
   updateProfile: createAction('UPDATE_PROFILE', resolve => {
     return (profile: IContact) => resolve({ profile })
   }),
@@ -118,6 +121,7 @@ export interface MainState {
   nodeState: NodeState
   statusUpdates: Status[]
   profile?: IContact
+  peerId?: string
   avatarSet?: boolean
   gameThread?: Thread
   creatingGame?: boolean
@@ -171,6 +175,9 @@ export function reducer(state = initialState, action: MainActions) {
     }
     case getType(actions.updateProfile): {
       return { ...state, profile: action.payload.profile}
+    }
+    case getType(actions.updatePeerId): {
+      return { ...state, peerId: action.payload.peerId}
     }
     case getType(actions.pushNewMessage): {
       return { ...state, statusUpdates: [...state.statusUpdates, action.payload.message] }

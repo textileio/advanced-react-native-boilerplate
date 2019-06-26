@@ -4,16 +4,20 @@ import MainActions, {MainSelectors} from '../Redux/MainRedux'
 import Textile from '@textile/react-native-sdk'
 import { initChatSagas } from './SubSagas/Chat'
 import { initContactsSagas } from './SubSagas/Contacts'
-import { initGameSagas } from './SubSagas/Game'
+import { initGameSagas, keyPrefix } from './SubSagas/Game'
 import { initInvitesSagas } from './SubSagas/Invites'
 import { getUserProfile, initUserProfileSagas } from './SubSagas/UserProfile'
 
+export const cafeUrl = 'https://eu-west-1.textile.cafe'
 /**
  * Starts up the Textile & IPFS peers
  */
 export function *initializeTextile() {
   try {
     yield call(Textile.initialize, false, false)
+    yield call(getUserProfile)
+    const peerId = yield call([Textile.ipfs, 'peerId'])
+    yield put(MainActions.updatePeerId(peerId))
   } catch (error) {
     yield put(MainActions.newNodeState('error'))
   }
@@ -24,7 +28,7 @@ export function *initializeTextile() {
  */
 export function *collectThreads() {
   const threads = yield call([Textile.threads, 'list'])
-  const games = threads.items
+  const games = threads.items.filter((item) => item.key.indexOf(keyPrefix) !== -1)
   if (games.length) {
     yield put(MainActions.setCurrentGame(games[0]))
   }
@@ -40,10 +44,18 @@ export function* onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
     if (!cafeRegistered) {
       const cafes = yield call([Textile.cafes, 'sessions'])
       if (!cafes.items.length) {
-        yield call([Textile.cafes, 'register'], 'https://us-west-beta.textile.cafe', 'ukbN5nU1BhhiDwBPq3XrbUnqakzKnrVRBXc5u2oj1Np3DBttmn757PYsN2u2')
+        yield call(
+          [Textile.cafes, 'register'],
+          cafeUrl,
+          ''
+        )
       }
+      console.log('REGISTRATION SUCCESS')
       yield put(MainActions.cafeRegistrationSuccess())
+    } else {
+      console.log('REGISTRATION EXISTS')
     }
+    yield call(getUserProfile)
   } catch (error) {
     // pass, not too worried about the cafe in this app
   }
@@ -51,7 +63,6 @@ export function* onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
   yield put(MainActions.pushNewMessage(
     {type: 'text', message: 'connected'}
   ))
-  yield call(getUserProfile)
 }
 
 /* eslint require-yield:1 */

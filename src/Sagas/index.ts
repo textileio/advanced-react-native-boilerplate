@@ -1,10 +1,6 @@
 import { all, call } from 'redux-saga/effects'
 import { Dispatch } from 'redux'
 
-/* ------------- Types ------------- */
-
-import MainActions from '../Redux/MainRedux'
-
 /* ------------- Sagas ------------- */
 
 import { mainSagaInit } from './MainSagas'

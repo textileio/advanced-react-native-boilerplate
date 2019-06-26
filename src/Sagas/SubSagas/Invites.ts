@@ -6,6 +6,65 @@ import Textile from '@textile/react-native-sdk'
 import { Alert } from 'react-native'
 import { collectThreads } from '../MainSagas'
 
+// export function *pullInvite(id: string, threadId: string) {
+//   const gateway = `${cafeUrl}/ipfs/${id}`
+//   console.log('gateway')
+//   console.log(gateway)
+//   yield call(delay, 500)
+//   const data: string = yield fetch(gateway).then((response) => response.toString() )//.text())
+//   console.log()
+//   console.log('data')
+//   console.log(data)
+//   console.log()
+//   console.log(threadId)
+//   console.log()
+//   const input = Buffer.from(data).toString('base64')
+//   console.log(input)
+//   console.log()
+//   const prepared: IMobilePreparedFiles = yield call([Textile.files, 'prepare'], input , threadId)
+//   console.log(prepared)
+//   const result = yield call([Textile.files, 'add'], prepared.dir, threadId)
+
+//   // console.log(result)
+//   console.log(prepared.dir.files[':single'].hash)
+
+
+//   try {
+//     yield call([Textile.invites, 'acceptExternal'], prepared.dir.files[':single'].hash, '2tSCJEL3Btuh9Ee2GXA2CnRPuANUU22zT9XtrXcysqNovRRRg5NfdCUqpuFL')
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
+// export function *primePump(id: string) {
+//   const inviteKeyPrefix = 'textile_ipfs-tag-invites'
+//   const threads = yield call([Textile.threads, 'list'])
+//   const invites = threads.items.filter((item) => item.key.indexOf(inviteKeyPrefix) !== -1)
+//   if (invites.length) {
+//     const thread = invites[0]
+//     yield call(pullInvite, id, thread.id)
+//   } else {
+//     const key = `${inviteKeyPrefix}-0`
+
+//     const tagSchema = {
+//       "name": "cmd-line-tag-invites",
+//       "mill": "/blob",
+//       "plaintext": true
+//     }
+
+//     const config: IAddThreadConfig = {
+//       key,
+//       name: 'invite-cache',
+//       type: Thread.Type.PRIVATE,
+//       sharing: Thread.Sharing.NOT_SHARED,
+//       schema: { id: '', json: JSON.stringify(tagSchema), preset: AddThreadConfig.Schema.Preset.NONE },
+//       force: false,
+//       whitelist: []
+//     }
+//     const thread = yield call([Textile.threads, 'add'], config)
+//     yield call(pullInvite, id, thread.id)
+//   }
+// }
+
 export function* generateNewInvite(action: ActionType<typeof MainActions.generateNewInvite>) {
   const gameThread = yield select(MainSelectors.gameThread)
   if (gameThread) {

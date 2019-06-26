@@ -5,7 +5,8 @@ import {
   View,
   Text,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Clipboard
 } from 'react-native'
 import { RootAction, RootState } from '../../Redux/Types'
 import styles from '../Styles'
@@ -14,7 +15,7 @@ import MainActions from '../../Redux/MainRedux'
 interface ScreenProps {
   navigateHome: () => void
 }
-class ChatInput extends React.Component<DispatchProps & ScreenProps> {
+class ChatInput extends React.Component<DispatchProps & ScreenProps & StateProps> {
   state = {
     text: ''
   }
@@ -48,13 +49,19 @@ class ChatInput extends React.Component<DispatchProps & ScreenProps> {
       this.setState({text: ''})
       this.props.navigateHome()
     }
+    if (this.state.text === '/peerid') {
+      Clipboard.setString(this.props.peerId)
+      this.setState({text: ''})
+    }
     this.setState({text: ''})
   }
 }
 
+interface StateProps {peerId: string}
 
-function mapStateToProps(state: RootState): {} {
+function mapStateToProps(state: RootState): StateProps {
   return {
+    peerId: state.main.peerId
   }
 }
 

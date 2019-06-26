@@ -9,8 +9,9 @@ import { Alert } from 'react-native'
 import { collectThreads } from '../MainSagas'
 import { refreshGameContacts } from './Contacts'
 import { updateMessages } from './Chat'
-import numbersToWords from 'number-to-words'
+import base64 from 'base-64'
 
+export const keyPrefix = 'textile_ipfs-tag-shared'
 
 /** 
   * The schema for a game of tag.
@@ -80,7 +81,7 @@ export function *checkCurrentGame() {
 export function* createNewGame(action: ActionType<typeof MainActions.createNewGameSuccess>) {
   try {
     const { name } = action.payload
-    const key = `textile_ipfs-tag-shared-${uuid()}`
+    const key = `${keyPrefix}-${uuid()}`
     const config: IAddThreadConfig = {
       key,
       name,
@@ -210,8 +211,14 @@ export function *restartGame() {
       if (started && startTime + duration < now) {
         const payload = JSON.stringify({ "event": "restart", "duration": duration})
         const input = Buffer.from(payload).toString('base64')
-        const result = yield call(Textile.files.prepare, input, gameThread.id)
-        yield call(Textile.files.add, result.dir, gameThread.id)
+        
+        // @ts-ignore
+        yield call(Textile.files.addData, input, gameThread.id)
+        
+        // const input = new Int8Array(payload)
+        // const input = JSON.parse(payload)
+        // const result = yield call(Textile.files.prepare, input, gameThread.id)
+        // yield call(Textile.files.add, result.dir, gameThread.id)
         yield call(checkGameStatus, gameThread)
       }
     } 
@@ -261,17 +268,34 @@ export function* setGameDurationRequest(action: ActionType<typeof MainActions.se
   }
 }
 
+
+export function *jsonToArray (json) {
+	var str = JSON.stringify(json, null, 0);
+	var ret = new Uint8Array(str.length);
+	for (var i = 0; i < str.length; i++) {
+		ret[i] = str.charCodeAt(i);
+	}
+	return ret
+}
+
 export function* startGame(action: ActionType<typeof MainActions.startGame>) {
   try {
     const profile = yield select(MainSelectors.profile)
     const gameThread = yield select(MainSelectors.gameThread)
     const duration = yield select(MainSelectors.duration)
     if (gameThread && profile && profile.address) {
-      const payload = JSON.stringify({ "event": "start", "target": profile.address, duration})
-      const input = Buffer.from(payload).toString('base64')
-      const result = yield call(Textile.files.prepare, input, gameThread.id)
-      yield call(Textile.files.add, result.dir, gameThread.id)
-      
+      const startJson = { "event": "start", "target": profile.address, duration}
+      const payload = JSON.stringify(startJson)
+
+      const buffer = Buffer.from(payload).toString('base64')
+
+      // const input = Buffer.from(payload) //.toString('base64')
+      // const input = jsonToArray({ "event": "start", "target": profile.address, duration})
+      // let input: Uint8Array = Buffer.from('JSON.parse(payload)', 'utf8')
+      // const buffer = Buffer.from(payload, 'utf8')
+      // @ts-ignore
+      yield call(Textile.files.addData, buffer, gameThread.id)
+
       const seconds = Math.round((new Date()).getTime() / 1000)
       yield put(MainActions.startGameSuccess(seconds))
       
@@ -279,7 +303,7 @@ export function* startGame(action: ActionType<typeof MainActions.startGame>) {
     }
   } catch (error) {
     yield put(MainActions.pushNewMessage(
-      {type: 'text', message: `Eee: ${error.message}`}
+      {type: 'text', message: `Oops: ${error.message}`}
     ))
   }
 }
@@ -330,8 +354,13 @@ export function* tagUser(action: ActionType<typeof MainActions.tagged>) {
     const profile = yield select(MainSelectors.profile)
     const payload = JSON.stringify({ 'event': 'tag', 'target': profile.address, 'source': action.payload.tagger })
     const input = Buffer.from(payload).toString('base64')
-    const result = yield call(Textile.files.prepare, input, gameThread.id)
-    yield call(Textile.files.add, result.dir, gameThread.id)
+    // const result = yield call(Textile.files.prepare, input, gameThread.id)
+    // yield call(Textile.files.add, result.dir, gameThread.id)
+    // const input = JSON.parse(payload)
+    // const bytes = new Uint8Array(input)
+
+    // @ts-ignore
+    yield call(Textile.files.addData, input, gameThread.id)
 
     Alert.alert(
       'You\'ve been tagged!'
