@@ -210,15 +210,8 @@ export function *restartGame() {
       const now = (new Date().getTime()) / 1000
       if (started && startTime + duration < now) {
         const payload = JSON.stringify({ "event": "restart", "duration": duration})
-        const input = Buffer.from(payload).toString('base64')
-        
-        // @ts-ignore
+        const input = Buffer.from(payload)
         yield call(Textile.files.addData, input, gameThread.id)
-        
-        // const input = new Int8Array(payload)
-        // const input = JSON.parse(payload)
-        // const result = yield call(Textile.files.prepare, input, gameThread.id)
-        // yield call(Textile.files.add, result.dir, gameThread.id)
         yield call(checkGameStatus, gameThread)
       }
     } 
