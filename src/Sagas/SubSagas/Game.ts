@@ -279,14 +279,7 @@ export function* startGame(action: ActionType<typeof MainActions.startGame>) {
     if (gameThread && profile && profile.address) {
       const startJson = { "event": "start", "target": profile.address, duration}
       const payload = JSON.stringify(startJson)
-
-      const buffer = Buffer.from(payload).toString('base64')
-
-      // const input = Buffer.from(payload) //.toString('base64')
-      // const input = jsonToArray({ "event": "start", "target": profile.address, duration})
-      // let input: Uint8Array = Buffer.from('JSON.parse(payload)', 'utf8')
-      // const buffer = Buffer.from(payload, 'utf8')
-      // @ts-ignore
+      const buffer = Buffer.from(payload)
       yield call(Textile.files.addData, buffer, gameThread.id)
 
       const seconds = Math.round((new Date()).getTime() / 1000)
@@ -346,13 +339,7 @@ export function* tagUser(action: ActionType<typeof MainActions.tagged>) {
     }
     const profile = yield select(MainSelectors.profile)
     const payload = JSON.stringify({ 'event': 'tag', 'target': profile.address, 'source': action.payload.tagger })
-    const input = Buffer.from(payload).toString('base64')
-    // const result = yield call(Textile.files.prepare, input, gameThread.id)
-    // yield call(Textile.files.add, result.dir, gameThread.id)
-    // const input = JSON.parse(payload)
-    // const bytes = new Uint8Array(input)
-
-    // @ts-ignore
+    const input = Buffer.from(payload)
     yield call(Textile.files.addData, input, gameThread.id)
 
     Alert.alert(
