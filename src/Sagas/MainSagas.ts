@@ -15,9 +15,6 @@ export const cafeUrl = 'https://eu-west-1.textile.cafe'
 export function *initializeTextile() {
   try {
     yield call(Textile.initialize, false, false)
-    yield call(getUserProfile)
-    const peerId = yield call([Textile.ipfs, 'peerId'])
-    yield put(MainActions.updatePeerId(peerId))
   } catch (error) {
     yield put(MainActions.newNodeState('error'))
   }
@@ -39,6 +36,9 @@ export function *collectThreads() {
  */
 export function* onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
   console.info('Running onOnline Saga')
+  yield call(getUserProfile)
+  const peerId = yield call([Textile.ipfs, 'peerId'])
+  yield put(MainActions.updatePeerId(peerId))
   const cafeRegistered = yield select(MainSelectors.cafeRegistered)
   try {
     if (!cafeRegistered) {
@@ -55,7 +55,6 @@ export function* onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
     } else {
       console.log('REGISTRATION EXISTS')
     }
-    yield call(getUserProfile)
   } catch (error) {
     // pass, not too worried about the cafe in this app
   }

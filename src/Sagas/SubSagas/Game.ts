@@ -209,7 +209,7 @@ export function *restartGame() {
       const now = (new Date().getTime()) / 1000
       if (started && startTime + duration < now) {
         const payload = JSON.stringify({ "event": "restart", "duration": duration})
-        const input = Buffer.from(payload)
+        const input = Buffer.from(payload).toString('base64')
         yield call(Textile.files.addData, input, gameThread.id)
         yield call(checkGameStatus, gameThread)
       }
@@ -278,7 +278,7 @@ export function* startGame(action: ActionType<typeof MainActions.startGame>) {
     if (gameThread && profile && profile.address) {
       const startJson = { "event": "start", "target": profile.address, duration }
       const payload = JSON.stringify(startJson)
-      const input = Buffer.from(payload)
+      const input = Buffer.from(payload).toString('base64')
       yield call(Textile.files.addData, input, gameThread.id)
 
       const seconds = Math.round((new Date()).getTime() / 1000)
@@ -338,7 +338,8 @@ export function* tagUser(action: ActionType<typeof MainActions.tagged>) {
     }
     const profile = yield select(MainSelectors.profile)
     const payload = JSON.stringify({ 'event': 'tag', 'target': profile.address, 'source': action.payload.tagger })
-    const input = Buffer.from(payload)
+    
+    const input = Buffer.from(payload).toString('base64')
     yield call(Textile.files.addData, input, gameThread.id)
 
     Alert.alert(
