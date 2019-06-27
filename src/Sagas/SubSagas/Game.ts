@@ -9,7 +9,6 @@ import { Alert } from 'react-native'
 import { collectThreads } from '../MainSagas'
 import { refreshGameContacts } from './Contacts'
 import { updateMessages } from './Chat'
-import base64 from 'base-64'
 
 export const keyPrefix = 'textile_ipfs-tag-shared'
 
@@ -141,8 +140,8 @@ export function* checkGameStatus(thread: Thread) {
         continue
       }
       const actor = file.user.address
-      const data = yield call([Textile.files, 'content'], file.files[0].file.hash)
-      const json = Buffer.from(data.split(',')[1], 'base64').toString()
+      const { data } = yield call([Textile.files, 'content'], file.files[0].file.hash)
+      const json = Buffer.from(data).toString()
       const gameEvent = JSON.parse(json)
 
       // Deal with the very first start event
@@ -277,10 +276,10 @@ export function* startGame(action: ActionType<typeof MainActions.startGame>) {
     const gameThread = yield select(MainSelectors.gameThread)
     const duration = yield select(MainSelectors.duration)
     if (gameThread && profile && profile.address) {
-      const startJson = { "event": "start", "target": profile.address, duration}
+      const startJson = { "event": "start", "target": profile.address, duration }
       const payload = JSON.stringify(startJson)
-      const buffer = Buffer.from(payload)
-      yield call(Textile.files.addData, buffer, gameThread.id)
+      const input = Buffer.from(payload)
+      yield call(Textile.files.addData, input, gameThread.id)
 
       const seconds = Math.round((new Date()).getTime() / 1000)
       yield put(MainActions.startGameSuccess(seconds))

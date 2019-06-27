@@ -196,7 +196,7 @@ class Home extends React.Component<StateProps & DispatchProps & NavigationScreen
       return (
         <PreGameOptions
           owner={!!this.props.gameInfo.owner}
-          memberCount={memberCount}
+          memberCount={99}
           invite={this.showInvite}
           leave={this.leaveDialog}
         />
