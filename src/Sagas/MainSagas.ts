@@ -8,7 +8,6 @@ import { initGameSagas, keyPrefix } from './SubSagas/Game'
 import { initInvitesSagas } from './SubSagas/Invites'
 import { getUserProfile, initUserProfileSagas } from './SubSagas/UserProfile'
 
-export const cafeUrl = 'https://eu-west-1.textile.cafe'
 /**
  * Starts up the Textile & IPFS peers
  */
@@ -40,14 +39,16 @@ export function* onOnline(action: ActionType<typeof MainActions.nodeOnline>) {
   const peerId = yield call([Textile.ipfs, 'peerId'])
   yield put(MainActions.updatePeerId(peerId))
   const cafeRegistered = yield select(MainSelectors.cafeRegistered)
+  // Read more about Cafe connections,
+  // https://docs.textile.io/concepts/cafes/
   try {
     if (!cafeRegistered) {
       const cafes = yield call([Textile.cafes, 'sessions'])
       if (!cafes.items.length) {
         yield call(
           [Textile.cafes, 'register'],
-          cafeUrl,
-          ''
+          '12D3KooWGN8VAsPHsHeJtoTbbzsGjs2LTmQZ6wFKvuPich1TYmYY',
+          'uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo'
         )
       }
       console.log('REGISTRATION SUCCESS')

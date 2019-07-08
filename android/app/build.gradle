@@ -105,8 +105,8 @@ android {
         applicationId "io.textile.ipfs.tag"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 16
-        versionName "0.0.16"
+        versionCode 19
+        versionName "0.0.19"
         ndk {
             abiFilters "armeabi-v7a", "x86", 'x86_64', 'arm64-v8a'
         }
