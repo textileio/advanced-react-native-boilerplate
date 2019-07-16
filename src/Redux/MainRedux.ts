@@ -153,6 +153,9 @@ const initialState: MainState = {
 export function reducer(state = initialState, action: MainActions) {
   switch (action.type) {
     case getType(actions.newSharedInvite): {
+      if (state.sharedInvite && state.sharedInvite.date && state.sharedInvite.date < action.payload.date) {
+        return state
+      }
       return { ...state, sharedInvite: action.payload}
     }
     case getType(actions.leaveGame): {
