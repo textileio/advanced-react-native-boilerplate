@@ -56,6 +56,8 @@
 	<string>Periodically wakes up the app to check for missed game activity.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Periodically wakes up the app to check for missed game activity.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We use your camera only when scanning QR codes during the game.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

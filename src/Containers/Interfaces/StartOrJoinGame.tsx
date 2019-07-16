@@ -15,7 +15,10 @@ import styles from '../Styles'
 import MainActions, { NodeState, Status } from '../../Redux/MainRedux'
 import { IContact } from '@textile/js-types'
 
-class StartOrJoinGame extends React.Component<DispatchProps> {
+interface InputProps {
+  join: () => void
+}
+class StartOrJoinGame extends React.Component<InputProps & DispatchProps> {
   state = {
     text: '',
     join: false
@@ -44,8 +47,8 @@ class StartOrJoinGame extends React.Component<DispatchProps> {
   }
 
   join = () => {
-    this.props.joinGame()
-    this.setState({join: true})
+    this.props.join()
+    // this.setState({join: true})
   }
   create = () => {
     this.props.createNewGame()
@@ -61,16 +64,16 @@ function mapStateToProps(state: RootState): {} {
 }
 
 interface DispatchProps {
-  joinGame: () => void
+  // joinGame: () => void
   createNewGame: () => void
 }
 function mapDispatchToProps(dispatch: Dispatch<RootAction>): DispatchProps {
   return {
-    joinGame: () => {
-      dispatch(
-        MainActions.joinGame()
-      )
-    },
+    // joinGame: () => {
+    //   dispatch(
+    //     MainActions.joinGame()
+    //   )
+    // },
     createNewGame: () => {
       dispatch(
         MainActions.createNewGame()

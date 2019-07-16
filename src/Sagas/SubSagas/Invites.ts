@@ -143,6 +143,7 @@ export function* processInvite(id: string, key: string, attempt: number) {
           yield put(MainActions.pushNewMessage(
             {type: 'text', message: `Try again: ${error.message}.`}
           ))
+          throw new Error(error.message)
         }
       }
   }

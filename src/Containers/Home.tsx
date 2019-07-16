@@ -174,7 +174,7 @@ class Home extends React.Component<StateProps & DispatchProps & NavigationScreen
     // Next, create or join a game
     if (!this.props.gameThread && !this.props.creatingGame) {
       return (
-        <StartOrJoinGame />
+        <StartOrJoinGame join={this.joinGame} />
       )
     }
     // If create, pick a name of game
@@ -222,6 +222,10 @@ class Home extends React.Component<StateProps & DispatchProps & NavigationScreen
 
   enterGame = () => {
     this.props.navigation.navigate({routeName: 'Game'})
+  }
+
+  joinGame = () => {
+    this.props.navigation.navigate({routeName: 'QRScanner'})
   }
 
   showInvite = () => {
