@@ -80,7 +80,11 @@ const actions = {
   refreshChatRequest: createAction('REFRESH_CHAT_REQUEST'),
   tagged: createAction('TAGGED', resolve => {
     return (tagger: string) => resolve({ tagger })
-  })
+  }),
+  // Takes a heartbeat from game players in the form of a common invite to use
+  newSharedInvite: createAction('NEW_SHARED_INVITE', resolve => {
+    return (id: string, key: string, date: number) => resolve({ id, key, date })
+  }),
 }
 
 export type MainActions = ActionType<typeof actions>
@@ -130,6 +134,11 @@ export interface MainState {
   gameInvite?: IExternalInvite
   gameLog: Tags[]
   chat: IText[]
+  sharedInvite?: {
+    id: string,
+    key: string,
+    date: number
+  }
 }
 
 const initialState: MainState = {
@@ -143,6 +152,9 @@ const initialState: MainState = {
 
 export function reducer(state = initialState, action: MainActions) {
   switch (action.type) {
+    case getType(actions.newSharedInvite): {
+      return { ...state, sharedInvite: action.payload}
+    }
     case getType(actions.leaveGame): {
       return { ...state, gameInfo: {started: false, duration: (24 * 3600)}}
     }
@@ -253,6 +265,7 @@ export const MainSelectors = {
   contacts: (state: RootState) => state.main.gameInfo.contacts,
   currentIt: (state: RootState) => state.main.gameInfo.currentIt,
   duration: (state: RootState) => state.main.gameInfo.duration,
-  chat: (state: RootState) => state.main.chat
+  chat: (state: RootState) => state.main.chat,
+  sharedInvite: (state: RootState) => state.main.sharedInvite
 }
 export default actions
