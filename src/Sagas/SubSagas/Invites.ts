@@ -88,7 +88,9 @@ export function* generateNewInvite(action: ActionType<typeof MainActions.generat
     const date = (new Date().getTime()) / 1000
     if (sharedInvite && sharedInvite.date && date - sharedInvite.date < 1800 && date - sharedInvite.date > 0) {
       // if we do have a valid shared invite, use it instead of creating a new one
-      const invite: IExternalInvite = {id: sharedInvite.id, key: sharedInvite.key, inviter: ''}
+      const profile = yield select(MainSelectors.profile)
+      const address = profile && profile.address ? profile.address : ''
+      const invite: IExternalInvite = {id: sharedInvite.id, key: sharedInvite.key, inviter: address}
       yield put(MainActions.generateNewInviteSuccess(invite))
       yield call(transmitHeartbeat, invite, date)
     } else {
