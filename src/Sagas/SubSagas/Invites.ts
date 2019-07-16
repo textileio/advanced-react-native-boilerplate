@@ -1,6 +1,7 @@
 import { takeLatest, put, call, select } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import { ActionType } from 'typesafe-actions'
+import { Buffer } from 'buffer'
 import MainActions, {MainSelectors} from '../../Redux/MainRedux'
 import Textile, { IExternalInvite } from '@textile/react-native-sdk'
 import { Alert } from 'react-native'
@@ -65,15 +66,18 @@ import { collectThreads } from '../MainSagas'
 //   }
 // }
 
-export function * transmitHeartbeat(invite: IExternalInvite, date: number) {
-  yield put(MainActions.newSharedInvite(invite.id, invite.key, date))
-  const gameThread = yield select(MainSelectors.gameThread)
-  if (gameThread) {
-    const payload = JSON.stringify({ "event": "invite", "id": invite.id, "key": invite.key})
-    const input = Buffer.from(payload).toString('base64')
-    yield call(Textile.files.addData, input, gameThread.id)
+function * transmitHeartbeat(invite: IExternalInvite, date: number) {
+  try {
+    yield put(MainActions.newSharedInvite(invite.id, invite.key, date))
+    const gameThread = yield select(MainSelectors.gameThread)
+    if (gameThread) {
+      const payload = JSON.stringify({ "event": "invite", "id": invite.id, "key": invite.key})
+      const input = Buffer.from(payload).toString('base64')
+      yield call(Textile.files.addData, input, gameThread.id)
+    }
+  } catch (err) {
+    console.log(err)
   }
-  yield 
 }
 
 export function* generateNewInvite(action: ActionType<typeof MainActions.generateNewInvite>) {

@@ -146,6 +146,7 @@ export function* checkGameStatus(thread: Thread) {
 
       // Whenever a user creates a new invite, they share it with all players so it be reused for some period
       if (gameEvent.event === 'invite' && gameEvent.id && gameEvent.key) {
+        console.log('GOT INVITE')
         yield put(MainActions.newSharedInvite(gameEvent.id, gameEvent.key, file.date.seconds as number))
         continue
       }
