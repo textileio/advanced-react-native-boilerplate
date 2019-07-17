@@ -112,6 +112,7 @@ android {
         }
         resValue "string", "build_config_package", "io.textile.ipfs.tag"
         multiDexEnabled true
+        missingDimensionStrategy 'react-native-camera', 'general'
     }
     signingConfigs {
         release {
