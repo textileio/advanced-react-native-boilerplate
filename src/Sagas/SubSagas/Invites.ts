@@ -1,8 +1,9 @@
 import { takeLatest, put, call, select } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import { ActionType } from 'typesafe-actions'
+import { Buffer } from 'buffer'
 import MainActions, {MainSelectors} from '../../Redux/MainRedux'
-import Textile from '@textile/react-native-sdk'
+import Textile, { IExternalInvite } from '@textile/react-native-sdk'
 import { Alert } from 'react-native'
 import { collectThreads } from '../MainSagas'
 
@@ -65,11 +66,39 @@ import { collectThreads } from '../MainSagas'
 //   }
 // }
 
+function * transmitHeartbeat(invite: IExternalInvite, date: number) {
+  try {
+    yield put(MainActions.newSharedInvite(invite.id, invite.key, date))
+    const gameThread = yield select(MainSelectors.gameThread)
+    if (gameThread) {
+      const payload = JSON.stringify({ "event": "invite", "id": invite.id, "key": invite.key})
+      const input = Buffer.from(payload).toString('base64')
+      yield call(Textile.files.addData, input, gameThread.id)
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export function* generateNewInvite(action: ActionType<typeof MainActions.generateNewInvite>) {
   const gameThread = yield select(MainSelectors.gameThread)
   if (gameThread) {
-    const invite = yield call([Textile.invites, 'addExternal'], gameThread.id)
-    yield put(MainActions.generateNewInviteSuccess(invite))
+    // check if we have a shared invite that is less than 30m old
+    const sharedInvite = yield select(MainSelectors.sharedInvite)
+    const date = (new Date().getTime()) / 1000
+    if (sharedInvite && sharedInvite.date && date - sharedInvite.date < 1800 && date - sharedInvite.date > 0) {
+      // if we do have a valid shared invite, use it instead of creating a new one
+      const profile = yield select(MainSelectors.profile)
+      const address = profile && profile.address ? profile.address : ''
+      const invite: IExternalInvite = {id: sharedInvite.id, key: sharedInvite.key, inviter: address}
+      yield put(MainActions.generateNewInviteSuccess(invite))
+      yield call(transmitHeartbeat, invite, date)
+    } else {
+      // no valid shared invite, so create a novel external invite and share it with the rest of the players
+      const invite = yield call([Textile.invites, 'addExternal'], gameThread.id)
+      yield put(MainActions.generateNewInviteSuccess(invite))
+      yield call(transmitHeartbeat, invite, date)
+    }
   }
 }
 
@@ -116,6 +145,7 @@ export function* processInvite(id: string, key: string, attempt: number) {
           yield put(MainActions.pushNewMessage(
             {type: 'text', message: `Try again: ${error.message}.`}
           ))
+          throw new Error(error.message)
         }
       }
   }

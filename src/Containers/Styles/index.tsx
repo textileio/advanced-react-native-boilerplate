@@ -24,6 +24,8 @@ interface Style {
   button: ViewStyle
   buttonIt: ViewStyle
   buttonLabel: TextStyle
+  scanIcon: ImageStyle
+  containerNoPadding: ViewStyle
 }
 
 const styles = StyleSheet.create<Style>({
@@ -123,6 +125,16 @@ const styles = StyleSheet.create<Style>({
     fontSize: 16,
     lineHeight: 20,
     textAlign: 'center'
+  },
+  scanIcon: {
+    height: 30,
+    width: 30
+  },
+  containerNoPadding: {
+    flex: 1,
+    backgroundColor: 'black',
+    padding: 0,
+    margin: 0
   }
 })
 

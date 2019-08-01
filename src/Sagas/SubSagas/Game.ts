@@ -144,6 +144,12 @@ export function* checkGameStatus(thread: Thread) {
       const json = Buffer.from(data).toString()
       const gameEvent = JSON.parse(json)
 
+      // Whenever a user creates a new invite, they share it with all players so it be reused for some period
+      if (gameEvent.event === 'invite' && gameEvent.id && gameEvent.key) {
+        yield put(MainActions.newSharedInvite(gameEvent.id, gameEvent.key, file.date.seconds as number))
+        continue
+      }
+      
       // Deal with the very first start event
       if (started === false && actor === initiator && gameEvent.event === 'start') {
         started = true
@@ -184,6 +190,7 @@ export function* checkGameStatus(thread: Thread) {
     if (started) {
       yield put(MainActions.startGameSuccess(startTime))
     }
+
     yield put(MainActions.setCurrentIt(tagged))
 
     yield call(refreshGameContacts, thread)

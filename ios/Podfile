@@ -29,6 +29,10 @@ target 'IPFSTag' do
   pod 'textile-react-native-sdk', :path => '../node_modules/@textile/react-native-sdk'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
+
 end
 
 # The following is needed to ensure the "archive" step works in XCode.
