@@ -2,12 +2,32 @@ import { takeLatest, put, call, delay } from 'redux-saga/effects'
 import { ActionType } from 'typesafe-actions'
 import MainActions from '../Redux/MainRedux'
 import Textile from '@textile/react-native-sdk'
+import FS from 'react-native-fs'
 
 const IPFS_PIN = 'QmZGaNPVSyDPF3xkDDF847rGcBsRRgEbhAqLLBD4gNB7ex/0/content'
 
 function* initializeTextile() {
   try {
-    yield call(Textile.initialize, false, false)
+    const textileRepoPath = `${FS.DocumentDirectoryPath}/textile-go`
+
+    const initialized = yield call(
+      Textile.isInitialized,
+      textileRepoPath
+    )
+    if (!initialized) {
+      const phrase = yield call(
+        Textile.initializeCreatingNewWalletAndAccount,
+        textileRepoPath,
+        false,
+        false
+      )
+    }
+    
+    yield call(Textile.launch, textileRepoPath, false)
+    
+    // Read about Textile Cafes here, https://docs.textile.io/concepts/cafes/
+    yield call(Textile.cafes.register, 'https://us-west-dev.textile.cafe', 'uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo')
+
   } catch (error) {
     yield put(MainActions.newNodeState('error'))
   }
@@ -23,8 +43,9 @@ export function* loadIPFSData(
 ) {
   try {
     // here we request raw data, where in the view, we'll use TextileImage to just render the request directly
-    const imageData = yield call(Textile.ipfs.dataAtPath, IPFS_PIN)
-    yield put(MainActions.loadIPFSDataSuccess(imageData))
+    const imageData: { data: Uint8Array; mediaType: string } = yield call(Textile.ipfs.dataAtPath, IPFS_PIN)
+    // @ts-ignore
+    yield put(MainActions.loadIPFSDataSuccess(imageData.data.toString('base64')))
     console.info('IPFS Success')
   } catch (error) {
     console.info('IPFS Failure. Waiting 0.5s')

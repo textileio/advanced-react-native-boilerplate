@@ -9,13 +9,14 @@
     "test": "jest"
   },
   "dependencies": {
-    "@textile/react-native-sdk": "1.2.13",
+    "@textile/react-native-sdk": "3.0.12",
     "buffer": "^5.2.1",
     "react": "^16.6.3",
     "react-native": "0.58.6",
     "react-native-background-fetch": "^2.4.3",
     "react-native-background-timer": "2.1.0-alpha.6",
     "react-native-fs": "^2.11.17",
+    "react-native-gesture-handler": "v1.3.0",
     "react-native-responsive-fontsize": "^0.1.8",
     "react-native-typography": "^1.4.0",
     "react-navigation": "^3.2.3",
