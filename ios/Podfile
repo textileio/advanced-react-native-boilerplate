@@ -27,6 +27,8 @@ target 'TApp' do
 
   # your other libraries will follow here!
   pod 'textile-react-native-sdk', :path => '../node_modules/@textile/react-native-sdk'
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
 end
 
 # The following is needed to ensure the "archive" step works in XCode.

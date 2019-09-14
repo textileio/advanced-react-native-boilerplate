@@ -671,19 +671,19 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.0.0.tgz#9342b7eb52ed3c903e122841407d4984b7338339"
 
-"@textile/js-types@0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@textile/js-types/-/js-types-0.2.6.tgz#eb397cada3a03241b09d97434a3bb910d9277c4c"
-  integrity sha512-OzzPyyVgysyPhf761rRqf8saDGbgdWSktiQJLrXoeopMqpQUOqWUZbdqUJ3aIyia3Iq3b8ltnwve/ALrymD3DA==
+"@textile/js-types@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@textile/js-types/-/js-types-0.7.1.tgz#e5c0f96403d5e764e80c8064491ad307dd92c993"
+  integrity sha512-vk7Lg+l8X1CF4p84c9E1QY2ahrp+tDlQYB98Aw/CJGvDDXFEXeAMjJM+NccdxmbXy9nYoxjb6jdVNKOHQeJNDg==
   dependencies:
     protobufjs "^6.8.8"
 
-"@textile/react-native-sdk@1.2.13":
-  version "1.2.13"
-  resolved "https://registry.yarnpkg.com/@textile/react-native-sdk/-/react-native-sdk-1.2.13.tgz#426e6713f5a9e1e432cc23e4a3c92a78ddfd9027"
-  integrity sha512-8jnssC/cLMRTKV5/PrrBqPzZCP9mDso3SUFXhpbOTHyfCp6WIwoUGiRcFCt0aX/R6DVUHHyIRF3/YCm959SEBQ==
+"@textile/react-native-sdk@3.0.12":
+  version "3.0.12"
+  resolved "https://registry.yarnpkg.com/@textile/react-native-sdk/-/react-native-sdk-3.0.12.tgz#b25fb298a890d16c9dac9bb28a0b08508cdc50d6"
+  integrity sha512-MguUOZF0K7J4wlrKL6M0sLcSaQUBWMqQvgBDTiibV1mIx+RdThf1ZylnNvDfhouVE0PvyUbq/Hn9cPUpuVmqUg==
   dependencies:
-    "@textile/js-types" "0.2.6"
+    "@textile/js-types" "0.7.1"
     buffer "^5.2.1"
 
 "@types/cheerio@*":
@@ -4991,6 +4991,15 @@ react-native-fs@^2.11.17:
   dependencies:
     base-64 "^0.1.0"
     utf8 "^2.1.1"
+
+react-native-gesture-handler@v1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.3.0.tgz#d0386f565928ccc1849537f03f2e37fd5f6ad43f"
+  integrity sha512-ASRFIXBuKRvqlmwkWJhV8yP2dTpvcqVrLNpd7FKVBFHYWr6SAxjGyO9Ik8w1lAxDhMlRP2IcJ9p9eq5X2WWeLQ==
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
+    invariant "^2.2.2"
+    prop-types "^15.5.10"
 
 react-native-gesture-handler@~1.0.14:
   version "1.0.16"

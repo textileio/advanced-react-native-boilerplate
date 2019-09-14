@@ -5,15 +5,10 @@ import {
   View,
   Text,
   Image,
-  TouchableOpacity,
-  Linking,
-  Dimensions
 } from 'react-native'
 import { RootAction, RootState } from '../Redux/Types'
 import styles from './Styles'
 import { NodeState } from '../Redux/MainRedux'
-
-const IPFS_PIN = 'QmZGaNPVSyDPF3xkDDF847rGcBsRRgEbhAqLLBD4gNB7ex/0/content'
 
 class Home extends React.Component<StateProps> {
   render() {
@@ -41,6 +36,7 @@ class Home extends React.Component<StateProps> {
   }
 
   renderImage = () => {
+    console.log(this.props.ipfsImage)
     return (
       <Image
         style={{ width: 150, height: 150, marginTop: 20 }}
