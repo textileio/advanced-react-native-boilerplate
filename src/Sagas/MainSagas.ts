@@ -25,9 +25,6 @@ function* initializeTextile() {
     
     yield call(Textile.launch, textileRepoPath, false)
     
-    // Read about Textile Cafes here, https://docs.textile.io/concepts/cafes/
-    yield call(Textile.cafes.register, 'https://us-west-dev.textile.cafe', 'uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo')
-
   } catch (error) {
     yield put(MainActions.newNodeState('error'))
   }
@@ -59,6 +56,11 @@ export function* newNodeState(
   action: ActionType<typeof MainActions.newNodeState>
 ) {
   console.info('Running newNodeState Saga')
+
+  if (action.payload.nodeState === 'started') {
+      // Read about Textile Cafes here, https://docs.textile.io/concepts/cafes/
+      yield call(Textile.cafes.register, 'https://us-west-dev.textile.cafe', 'uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo')
+  }
 }
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
